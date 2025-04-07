@@ -53,7 +53,7 @@
         .footer-container {
             background-color: #ffffff;
             color: #212529;
-            padding: 15px 0;
+            padding: 20px 0;
             text-align: center;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
@@ -65,7 +65,78 @@
         .footer-container a:hover {
             color: #0056b3;
         }
-        /* Responsive Design */
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        .section h2 {
+            font-size: 1.6rem;
+            color: #0077ff;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .section p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+        .section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        .section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .section table th,
+        .section table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .section table th {
+            background-color: #0077ff;
+            color: white;
+        }
+        .section table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .btn, .download-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #0077ff, #00bfff);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover, .download-button:hover {
+            background: linear-gradient(135deg, #0056b3, #0099cc);
+            transform: scale(1.1);
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .action-buttons a {
+            white-space: nowrap; /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
+        }
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -77,6 +148,21 @@
                 align-items: center;
                 flex-wrap: wrap;
             }
+            .section h2 {
+                font-size: 1.4rem;
+            }
+            .section p {
+                font-size: 0.9rem;
+            }
+            .btn, .download-button {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+            .action-buttons {
+                flex-direction: row;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
         }
         @media (max-width: 480px) {
             .logo {
@@ -84,6 +170,23 @@
             }
             .header-container h1 {
                 font-size: 1rem;
+            }
+            .section h2 {
+                font-size: 1.2rem;
+            }
+            .section p {
+                font-size: 0.8rem;
+            }
+            .section table {
+                font-size: 0.8rem;
+            }
+            .btn, .download-button {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -103,6 +206,25 @@
             </nav>
         </div>
     </header>
+    <section id="introduction">
+        <div class="container">
+            <h2>หลักสูตรที่ 3: ระบบการทำงานของเครื่องปรับอากาศโซลาร์ไฮบริด</h2>
+            <p>หลักสูตรนี้อธิบายหลักการทำงานของระบบแอร์ที่ใช้พลังงานแสงอาทิตย์ร่วมกับไฟฟ้าปกติ เพื่อเพิ่มประสิทธิภาพและลดค่าไฟฟ้า</p>
+            <ul>
+                <li><strong>การทำงานแบบไฮบริด:</strong> ใช้พลังงานจากโซลาร์เซลล์ก่อน แล้วเสริมด้วยไฟฟ้าปกติเมื่อจำเป็น</li>
+                <li><strong>อุปกรณ์สำคัญ:</strong> แผงโซลาร์เซลล์, อินเวอร์เตอร์, คอมเพรสเซอร์อินเวอร์เตอร์, คอนโทรลเลอร์ และชุดแอร์</li>
+                <li><strong>โหมดการทำงาน:</strong> Solar Priority, Auto Hybrid, Backup Grid</li>
+            </ul>
+            <p><strong>ผลลัพธ์หลังอบรม:</strong> ผู้เรียนสามารถเข้าใจวงจรการทำงานของระบบได้ครบถ้วน และสามารถอธิบายต่อได้อย่างมั่นใจ</p>
+        </div>
+    </section>
+    <section id="installation-guide">
+        <div class="container">
+            <a href="search.html" class="btn" target="_blank">ค้นหารายชื่อเพื่อลงทะเบียน</a>
+            <a href="assets/แอร์โซลาร์ v3.1.pdf" download class="download-button">เอกสารหลักสูตรการอบรม</a>
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUNFk0TklLU1FPWEMySktZQk40WTgyQVJIWi4u" class="btn" target="_blank">เริ่มทดสอบ</a>
+        </div>
+    </section>
     <div class="container footer-container">
         <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
     </div>
