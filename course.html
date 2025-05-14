@@ -135,45 +135,66 @@
         footer a:hover {
             color: #0056b3;
         }
-        /* Responsive Design */
+        /* Responsive for Mobile */
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
-                text-align: center;
+                align-items: center;
             }
+
             nav ul {
                 flex-direction: row;
                 gap: 10px;
-                align-items: center;
                 flex-wrap: wrap;
             }
+
             .dropdown-button {
                 font-size: 0.9rem;
-                padding: 10px;
+                padding: 12px;
+                width: 100%;
             }
+
             .course-item h3 {
                 font-size: 1rem;
             }
+
             .course-item p {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
             }
         }
+
         @media (max-width: 480px) {
             .logo {
                 height: 40px;
             }
+
             .header-container h1 {
                 font-size: 1rem;
             }
+
             .dropdown-button {
-                font-size: 0.8rem;
-                padding: 8px;
+                font-size: 0.85rem;
+                padding: 10px;
             }
+
             .course-item h3 {
                 font-size: 0.9rem;
             }
+
             .course-item p {
                 font-size: 0.8rem;
+            }
+
+            .btn {
+                font-size: 0.8rem;
+                padding: 6px;
             }
         }
     </style>
