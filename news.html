@@ -4,32 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ข่าวสาร - e-Learning สำหรับอบรมพนักงาน</title>
-    <!-- Favicon สำหรับเบราว์เซอร์ -->
-<link rel="icon" href="favicon.png" type="image/png">
 
-<!-- สำหรับ iOS (Apple Devices) -->
-<link rel="apple-touch-icon" href="Favicon (2).png">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="Favicon (2).png">
+    <link rel="manifest" href="manifest.json">
 
-<!-- สำหรับ Android (ใช้กับ Add to Home Screen) -->
-<link rel="manifest" href="manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt :wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Prompt', sans-serif;
             line-height: 1.6;
             background-color: #f9f9f9;
             color: #333;
         }
+
+        /* Skip to Content */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #0077ff;
+            color: white;
+            padding: 10px;
+            z-index: 100;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header */
         header {
             background: linear-gradient(135deg, #0077ff, #00bfff);
             color: white;
             padding: 20px 0;
         }
+
         .header-container {
             display: flex;
             align-items: center;
@@ -38,130 +57,191 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+
         .logo {
             height: 50px;
         }
+
         nav ul {
             list-style: none;
             display: flex;
             gap: 20px;
         }
+
         nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 0.9rem;
             padding: 10px 15px;
             border-radius: 20px;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: all 0.3s ease;
         }
+
         nav ul li a:hover {
             background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
         main {
-            padding: 20px;
+            padding: 40px 20px;
         }
+
         h2 {
             color: #0077ff;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             text-align: center;
+            font-weight: 600;
         }
+
+        /* News Section */
         .news-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
+
         .news-item {
             background-color: white;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .news-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
+
         .news-item img {
             width: 100%;
-            height: auto;
+            height: 200px;
+            object-fit: cover;
             border-radius: 10px;
             margin-bottom: 15px;
+            transition: transform 0.3s ease;
         }
+
+        .news-item img:hover {
+            transform: scale(1.03);
+        }
+
         .news-item h3 {
             margin-bottom: 10px;
             color: #0077ff;
+            font-size: 1.2rem;
         }
+
         .news-item p {
             font-size: 0.95rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            color: #555;
         }
+
         .btn {
             display: inline-block;
             background: linear-gradient(135deg, #007bff, #0056b3);
             color: white;
             text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 25px;
-            transition: background-color 0.3s, transform 0.3s;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
+
         .btn:hover {
             background: linear-gradient(135deg, #0056b3, #003d80);
-            transform: scale(1.1);
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 86, 179, 0.3);
         }
+
+        /* Footer */
         footer {
             background-color: #ffffff;
             color: #212529;
-            padding: 15px 0;
+            padding: 20px 0;
             text-align: center;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
+
         footer a {
             color: #0077ff;
             text-decoration: none;
             transition: color 0.3s;
         }
+
         footer a:hover {
             color: #0056b3;
         }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
                 text-align: center;
             }
+
             nav ul {
                 flex-direction: row;
                 gap: 10px;
-                align-items: center;
                 flex-wrap: wrap;
             }
+
             .news-item h3 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
+
             .news-item p {
                 font-size: 0.9rem;
             }
+
+            .news-item img {
+                height: 180px;
+            }
         }
+
         @media (max-width: 480px) {
             .logo {
                 height: 40px;
             }
+
             .header-container h1 {
                 font-size: 1rem;
             }
+
             .news-item h3 {
                 font-size: 1rem;
             }
+
             .news-item p {
                 font-size: 0.8rem;
+            }
+
+            .news-item img {
+                height: 150px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
+    <a href="#news" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
+
     <header>
-        <div class="container header-container">
-            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo">
+        <div class="header-container">
+            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" aria-hidden="true">
             <h1 style="font-size: 1.5rem;">e-Learning สำหรับอบรมพนักงาน</h1>
             <nav>
                 <ul>
@@ -181,21 +261,21 @@
                 <div class="news-container">
                     <!-- News Item 1 -->
                     <div class="news-item">
-                        <img src="assets/new1.jpg" alt="ภาพข่าวสาร 1">
+                        <img src="assets/news1.png" alt="ภาพข่าวสาร 1" loading="lazy">
                         <h3>ประชาสัมพันธ์ 📢📢📢📢📢📢</h3>
                         <p>ร้านแว่นตา นัมเบอร์ไนน์ ออฟติค เปิดบูทให้บริการวัดสายตาและจำหน่ายแว่นตาแก่พนักงาน</p>
                         <a href="news-detail1.html" class="btn">อ่านเพิ่มเติม</a>
                     </div>
                     <!-- News Item 2 -->
                     <div class="news-item">
-                        <img src="assets/news2.jpg" alt="ภาพข่าวสาร 2">
+                        <img src="assets/news2.jpg" alt="ภาพข่าวสาร 2" loading="lazy">
                         <h3>เทคนิคการทำงานแบบ Agile</h3>
                         <p>เรียนรู้วิธีการทำงานแบบ Agile เพื่อเพิ่มประสิทธิภาพและความยืดหยุ่นในการทำงานเป็นทีม</p>
                         <a href="news-detail2.html" class="btn">อ่านเพิ่มเติม</a>
                     </div>
                     <!-- News Item 3 -->
                     <div class="news-item">
-                        <img src="assets/news3.jpg" alt="ภาพข่าวสาร 3">
+                        <img src="assets/news3.jpg" alt="ภาพข่าวสาร 3" loading="lazy">
                         <h3>การพัฒนาทักษะการสื่อสาร</h3>
                         <p>การสื่อสารที่มีประสิทธิภาพช่วยเสริมสร้างความสำเร็จในที่ทำงานและลดความขัดแย้ง</p>
                         <a href="news-detail3.html" class="btn">อ่านเพิ่มเติม</a>
@@ -206,7 +286,7 @@
     </main>
 
     <footer>
-        <div class="container footer-container">
+        <div class="container">
             <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
         </div>
     </footer>
