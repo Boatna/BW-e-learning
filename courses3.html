@@ -4,32 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>e-Learning สำหรับอบรมพนักงาน</title>
-    <!-- Favicon สำหรับเบราว์เซอร์ -->
-<link rel="icon" href="favicon.png" type="image/png">
 
-<!-- สำหรับ iOS (Apple Devices) -->
-<link rel="apple-touch-icon" href="Favicon (2).png">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="Favicon (2).png">
+    <link rel="manifest" href="manifest.json">
 
-<!-- สำหรับ Android (ใช้กับ Add to Home Screen) -->
-<link rel="manifest" href="manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: 'Prompt', sans-serif;
+            font-family: 'Kanit', sans-serif;
             line-height: 1.6;
             background-color: #f9f9f9;
             color: #333;
         }
+
+        /* Skip to Content */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #0077ff;
+            color: white;
+            padding: 10px;
+            z-index: 100;
+            text-decoration: none;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header */
         header {
-            background: linear-gradient(135deg, #0077ff, #00bfff);
+            background: linear-gradient(135deg, #216fc7, #216fc7);
             color: white;
             padding: 20px 0;
         }
+
         .header-container {
             display: flex;
             align-items: center;
@@ -38,68 +59,85 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+
         .logo {
-            height: 50px;
+            height: 80px;
         }
+
         nav ul {
             list-style: none;
             display: flex;
             gap: 20px;
         }
+
         nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 0.9rem;
             padding: 10px 15px;
             border-radius: 20px;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: all 0.3s ease;
         }
+
         nav ul li a:hover {
             background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
-        .footer-container {
-            background-color: #ffffff;
-            color: #212529;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .footer-container a {
-            color: #0077ff;
-            text-decoration: none;
-            transition: color 0.3s;
+
+        main {
+            padding: 40px 20px;
         }
-        .footer-container a:hover {
-            color: #0056b3;
-        }
-        .section {
+
+        h2 {
+            color: #216fc7;
             margin-bottom: 30px;
-            padding: 25px;
-            background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            text-align: center;
+            font-weight: 600;
         }
+
+        /* Section Styling */
+        .section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+        }
+
         .section:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
+
         .section h2 {
             font-size: 1.6rem;
-            color: #0077ff;
+            color: #216fc7;
             margin-bottom: 15px;
             text-align: center;
         }
+
         .section p {
             font-size: 1rem;
             margin-bottom: 10px;
             text-align: justify;
+            color: #555;
         }
+
         .section ul {
             list-style-type: disc;
             margin-left: 20px;
             margin-bottom: 15px;
         }
+
         .section table {
             width: 100%;
             border-collapse: collapse;
@@ -107,34 +145,45 @@
             border-radius: 10px;
             overflow: hidden;
         }
+
         .section table th,
         .section table td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
         }
+
         .section table th {
-            background-color: #0077ff;
+            background-color: #216fc7;
             color: white;
         }
+
         .section table tr:nth-child(even) {
             background-color: #f9f9f9;
         }
-        .btn, .download-button {
+
+        /* Buttons */
+        .btn,
+        .download-button {
             display: inline-block;
             margin-top: 15px;
             padding: 12px 20px;
-            background: linear-gradient(135deg, #0077ff, #00bfff);
+            background: linear-gradient(135deg, #007bff, #0056b3);
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
-        .btn:hover, .download-button:hover {
-            background: linear-gradient(135deg, #0056b3, #0099cc);
-            transform: scale(1.1);
+
+        .btn:hover,
+        .download-button:hover {
+            background: linear-gradient(135deg, #0056b3, #003d80);
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 86, 179, 0.3);
         }
+
+        /* Action Buttons */
         .action-buttons {
             display: flex;
             justify-content: center;
@@ -142,56 +191,91 @@
             flex-wrap: wrap;
             margin-top: 30px;
         }
+
         .action-buttons a {
-            white-space: nowrap; /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
+            white-space: nowrap;
         }
+
+        /* Footer */
+        footer {
+            background-color: #ffffff;
+            color: #212529;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer a {
+            color: #0077ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #0056b3;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
                 text-align: center;
             }
+
             nav ul {
                 flex-direction: row;
                 gap: 10px;
-                align-items: center;
                 flex-wrap: wrap;
             }
+
             .section h2 {
                 font-size: 1.4rem;
             }
+
             .section p {
                 font-size: 0.9rem;
             }
-            .btn, .download-button {
+
+            .btn,
+            .download-button {
                 font-size: 0.9rem;
                 padding: 10px 15px;
             }
+
             .action-buttons {
                 flex-direction: row;
                 gap: 10px;
                 flex-wrap: wrap;
             }
         }
+
         @media (max-width: 480px) {
             .logo {
                 height: 40px;
             }
+
             .header-container h1 {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
+
             .section h2 {
                 font-size: 1.2rem;
             }
+
             .section p {
                 font-size: 0.8rem;
             }
+
             .section table {
                 font-size: 0.8rem;
             }
-            .btn, .download-button {
+
+            .btn,
+            .download-button {
                 font-size: 0.8rem;
                 padding: 8px 12px;
             }
+
             .action-buttons {
                 flex-direction: column;
                 gap: 10px;
@@ -200,9 +284,11 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
+
     <header>
-        <div class="container header-container">
-            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo">
+        <div class="header-container">
+            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" aria-hidden="true">
             <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
             <nav>
                 <ul>
@@ -214,30 +300,40 @@
             </nav>
         </div>
     </header>
-    <section id="introduction">
-        <div class="container">
-            <h2>หลักสูตรที่ 3: ระบบการทำงานของเครื่องปรับอากาศโซลาร์ไฮบริด</h2>
-            <p>หลักสูตรนี้อธิบายหลักการทำงานของระบบแอร์ที่ใช้พลังงานแสงอาทิตย์ร่วมกับไฟฟ้าปกติ เพื่อเพิ่มประสิทธิภาพและลดค่าไฟฟ้า</p>
-            <ul>
-                <li><strong>การทำงานแบบไฮบริด:</strong> ใช้พลังงานจากโซลาร์เซลล์ก่อน แล้วเสริมด้วยไฟฟ้าปกติเมื่อจำเป็น</li>
-                <li><strong>อุปกรณ์สำคัญ:</strong> แผงโซลาร์เซลล์, อินเวอร์เตอร์, คอมเพรสเซอร์อินเวอร์เตอร์, คอนโทรลเลอร์ และชุดแอร์</li>
-                <li><strong>โหมดการทำงาน:</strong> Solar Priority, Auto Hybrid, Backup Grid</li>
-            </ul>
-            <p><strong>ผลลัพธ์หลังอบรม:</strong> ผู้เรียนสามารถเข้าใจวงจรการทำงานของระบบได้ครบถ้วน และสามารถอธิบายต่อได้อย่างมั่นใจ</p>
+
+    <main id="main-content">
+        <section id="introduction" class="section">
+            <div class="container">
+                <h2>หลักสูตรที่ 3: ระบบการทำงานของเครื่องปรับอากาศโซลาร์ไฮบริด</h2>
+                <p>หลักสูตรนี้อธิบายหลักการทำงานของระบบแอร์ที่ใช้พลังงานแสงอาทิตย์ร่วมกับไฟฟ้าปกติ เพื่อเพิ่มประสิทธิภาพและลดค่าไฟฟ้า</p>
+                <ul>
+                    <li><strong>การทำงานแบบไฮบริด:</strong> ใช้พลังงานจากโซลาร์เซลล์ก่อน แล้วเสริมด้วยไฟฟ้าปกติเมื่อจำเป็น</li>
+                    <li><strong>อุปกรณ์สำคัญ:</strong> แผงโซลาร์เซลล์, อินเวอร์เตอร์, คอมเพรสเซอร์อินเวอร์เตอร์, คอนโทรลเลอร์ และชุดแอร์</li>
+                    <li><strong>โหมดการทำงาน:</strong> Solar Priority, Auto Hybrid, Backup Grid</li>
+                </ul>
+                <p><strong>ผลลัพธ์หลังอบรม:</strong> ผู้เรียนสามารถเข้าใจวงจรการทำงานของระบบได้ครบถ้วน และสามารถอธิบายต่อได้อย่างมั่นใจ</p>
+            </div>
+        </section>
+
+        <section id="installation-guide" class="section">
+            <div class="container">
+                <div class="action-buttons">
+                    <a href="search.html" class="btn" target="_blank">ค้นหารายชื่อเพื่อลงทะเบียน</a>
+                    <a href="assets/แอร์โซลาร์ v3.1.pdf" download class="download-button">เอกสารหลักสูตรการอบรม</a>
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkhQOURNN1pSWFJMVkFGTjdIUzBVS0wxNy4u " class="btn" target="_blank">เริ่มทดสอบ</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
         </div>
-    </section>
-    <section id="installation-guide">
-        <div class="container">
-            <a href="search.html" class="btn" target="_blank">ค้นหารายชื่อเพื่อลงทะเบียน</a>
-            <a href="assets/แอร์โซลาร์ v3.1.pdf" download class="download-button">เอกสารหลักสูตรการอบรม</a>
-            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkhQOURNN1pSWFJMVkFGTjdIUzBVS0wxNy4u" class="btn" target="_blank">เริ่มทดสอบ</a>
-        </div>
-    </section>
-    <div class="container footer-container">
-        <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
-    </div>
+    </footer>
+
     <!-- โหลดไลบรารี SheetJS -->
-    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js "></script>
     <!-- ไฟล์ JavaScript ของคุณ -->
     <script>
         // เพิ่มฟังก์ชัน JavaScript หากต้องการใช้งานเพิ่มเติม

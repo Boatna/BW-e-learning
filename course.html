@@ -1,310 +1,378 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-Learning สำหรับอบรมพนักงาน</title>
-    <!-- Favicon สำหรับเบราว์เซอร์ -->
-<link rel="icon" href="favicon.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>e-Learning สำหรับอบรมพนักงาน</title>
 
-<!-- สำหรับ iOS (Apple Devices) -->
-<link rel="apple-touch-icon" href="Favicon (2).png">
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="Favicon (2).png" />
+  <link rel="manifest" href="manifest.json" />
 
-<!-- สำหรับ Android (ใช้กับ Add to Home Screen) -->
-<link rel="manifest" href="manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Prompt', sans-serif;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        header {
-            background: linear-gradient(135deg, #216fc7, #216fc7);
-            color: white;
-            padding: 20px 0;
-        }
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .logo {
-            height: 80px;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 10px 15px;
-            border-radius: 20px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-        #courses {
-            padding: 30px 20px;
-            text-align: center;
-        }
-        .dropdown {
-            margin-bottom: 20px;
-        }
-        .dropdown-button {
-            background: linear-gradient(135deg, #216fc7, #216fc7);
-            color: white;
-            padding: 12px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            text-align: left;
-            font-size: 1rem;
-            border-radius: 15px;
-            transition: background-color 0.3s;
-        }
-        .dropdown-button:hover {
-            background: linear-gradient(135deg, #216fc7, #216fc7);
-        }
-        .dropdown-content {
-            display: none;
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-        .course-item {
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-            transition: background-color 0.3s;
-        }
-        .course-item:last-child {
-            border-bottom: none;
-        }
-        .course-item:hover {
-            background-color: #f0f8ff;
-        }
-        .course-item h3 {
-            margin-bottom: 10px;
-            color: #0077ff;
-        }
-        .course-item p {
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-        }
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #0077ff, #0056b3);
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 25px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .btn:hover {
-            background: linear-gradient(135deg, #0077ff, #0056b3);
-            transform: scale(1.1);
-        }
-        footer {
-            background-color: #ffffff;
-            color: #212529;
-            padding: 15px 0;
-            text-align: center;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        }
-        footer a {
-            color: #0077ff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        footer a:hover {
-            color: #0056b3;
-        }
-        /* Responsive for Mobile */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                align-items: center;
-            }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
 
-            nav ul {
-                flex-direction: row;
-                gap: 10px;
-                flex-wrap: wrap;
-            }
 
-            .dropdown-button {
-                font-size: 0.9rem;
-                padding: 12px;
-                width: 100%;
-            }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-            .course-item h3 {
-                font-size: 1rem;
-            }
+    body {
+      font-family: 'Kanit', sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+    }
 
-            .course-item p {
-                font-size: 0.85rem;
-            }
+    /* Skip to Content */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #0077ff;
+      color: white;
+      padding: 10px;
+      z-index: 100;
+      text-decoration: none;
+    }
 
-            .btn {
-                display: block;
-                width: 100%;
-                text-align: center;
-                margin-top: 10px;
-            }
-        }
+    .skip-link:focus {
+      top: 0;
+    }
 
-        @media (max-width: 480px) {
-            .logo {
-                height: 40px;
-            }
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #216fc7, #216fc7);
+      color: white;
+      padding: 20px 0;
+    }
 
-            .header-container h1 {
-                font-size: 1rem;
-            }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-            .dropdown-button {
-                font-size: 0.85rem;
-                padding: 10px;
-            }
+    .logo {
+      height: 80px;
+    }
 
-            .course-item h3 {
-                font-size: 0.9rem;
-            }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
 
-            .course-item p {
-                font-size: 0.8rem;
-            }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 10px 15px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
 
-            .btn {
-                font-size: 0.8rem;
-                padding: 6px;
-            }
-        }
-    </style>
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    /* Main Section */
+    main {
+      padding: 40px 20px;
+    }
+
+    h2 {
+      color: #216fc7;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Dropdown Course Sections */
+    #courses {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .dropdown {
+      margin-bottom: 20px;
+    }
+
+    .dropdown-button {
+      background: linear-gradient(135deg, #216fc7, #216fc7);
+      color: white;
+      padding: 12px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      font-size: 1rem;
+      border-radius: 15px;
+      transition: background-color 0.3s;
+    }
+
+    .dropdown-button:hover {
+      background: linear-gradient(135deg, #1a5fae, #1a5fae);
+    }
+
+    .dropdown-content {
+      display: none;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .course-item {
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+      transition: background-color 0.3s;
+    }
+
+    .course-item:last-child {
+      border-bottom: none;
+    }
+
+    .course-item:hover {
+      background-color: #f0f8ff;
+    }
+
+    .course-item h3 {
+      margin-bottom: 10px;
+      color: #0077ff;
+    }
+
+    .course-item p {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 25px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #0056b3, #003d80);
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #ffffff;
+      color: #212529;
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    footer a {
+      color: #0077ff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #0056b3;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul {
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .dropdown-button {
+        font-size: 0.9rem;
+        padding: 12px;
+        width: 100%;
+      }
+
+      .course-item h3 {
+        font-size: 1rem;
+      }
+
+      .course-item p {
+        font-size: 0.85rem;
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        height: 40px;
+      }
+
+      .header-container h1 {
+        font-size: 1rem;
+      }
+
+      .dropdown-button {
+        font-size: 0.85rem;
+        padding: 10px;
+      }
+
+      .course-item h3 {
+        font-size: 0.9rem;
+      }
+
+      .course-item p {
+        font-size: 0.8rem;
+      }
+
+      .btn {
+        font-size: 0.8rem;
+        padding: 6px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo">
-            <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">หน้าแรก</a></li>
-                    <li><a href="course.html">หลักสูตร</a></li>
-                    <li><a href="news.html">ข่าวสาร</a></li>
-                    <li><a href="contact.html">ติดต่อเรา</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
+
+  <header>
+    <div class="header-container">
+      <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" aria-hidden="true" />
+      <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">หน้าแรก</a></li>
+          <li><a href="course.html">หลักสูตร</a></li>
+          <li><a href="news.html">ข่าวสาร</a></li>
+          <li><a href="contact.html">ติดต่อเรา</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
     <section id="courses">
+      <div class="container">
         <h2>หลักสูตรที่เรามี</h2>
 
+        <!-- Aircon Training -->
         <div class="dropdown">
-            <button class="dropdown-button" onclick="toggleDropdown('aircon-training')">หมวดหมู่: 🔧อบรมเกี่ยวกับเครื่องปรับอากาศ ▼</button>
-            <div class="dropdown-content" id="aircon-training">
-                <div class="course-item">
-                    <h3>หลักสูตร 1: เรื่อง ความปลอดภัยในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-                    <p>ความปลอดภัยในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด คือ การดำเนินการติดตั้งโดยคำนึงถึงการลดความเสี่ยงจากอันตรายที่อาจเกิดขึ้น เช่น ไฟฟ้าดูด ไฟฟ้าช็อต อัคคีภัย การรั่วไหลของสารทำความเย็น หรือการทำงานบนที่สูง โดยมีมาตรการควบคุมความเสี่ยงตามหลักวิศวกรรมและความปลอดภัย</p>
-                    <a href="courses1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkVINTVDUldVQkZPWEhZVkQ0V1I5TTlWSi4u" class="btn" target="_blank">เริ่มทดสอบ</a>
-                </div>
-                <div class="course-item">
-                    <h3>หลักสูตร 2: เรื่อง เครื่องมือและอุปกรณ์ในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-                    <p>เพื่อให้ผู้เรียนสามารถรู้จัก เลือกใช้ และใช้งานเครื่องมือรวมถึงอุปกรณ์ต่าง ๆ ได้อย่างถูกต้องและปลอดภัย ในกระบวนการติดตั้งเครื่องปรับอากาศแบบโซลาร์ไฮบริด</p>
-                    <a href="courses2.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUM09ERTA1TEtFRUJLQzNZMU5ESEFXT1lPSC4u" class="btn" target="_blank">เริ่มทดสอบ</a>
-                </div>
-                <div class="course-item">
-                    <h3>หลักสูตร 3: เรื่อง ระบบการทำงานของเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-                    <p>เพื่อให้ผู้เรียนเข้าใจหลักการทำงานของเครื่องปรับอากาศแบบโซลาร์ไฮบริด ทั้งระบบพลังงานแสงอาทิตย์และระบบทำความเย็น สามารถอธิบายกระบวนการทำงาน และวิเคราะห์ระบบเบื้องต้นได้</p>
-                    <a href="courses3.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkhQOURNN1pSWFJMVkFGTjdIUzBVS0wxNy4u" class="btn" target="_blank">เริ่มทดสอบ</a>
-                </div>
-                <div class="course-item">
-                    <h3>หลักสูตร 4: เรื่อง งานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-                    <p>เพื่อให้ผู้เรียนมีความรู้และทักษะในการติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริดอย่างถูกต้องตามหลักวิศวกรรม มีขั้นตอนที่เป็นระบบ ปลอดภัย และมีประสิทธิภาพ</p>
-                    <a href="courses4.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkVINTVDUldVQkZPWEhZVkQ0V1I5TTlWSi4u" class="btn" target="_blank">เริ่มทดสอบ</a>
-                </div>
-                <div class="course-item">
-                    <h3>หลักสูตร 5: เรื่อง ข้อควรรู้ในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-                    <p>เครื่องปรับอากาศโซลาร์ไฮบริดทำงานร่วมกันระหว่าง ระบบพลังงานแสงอาทิตย์ (DC) และ ไฟฟ้ากระแสสลับจากการไฟฟ้า (AC)</p>
-                    <a href="courses5.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkVINTVDUldVQkZPWEhZVkQ0V1I5TTlWSi4u" class="btn" target="_blank">เริ่มทดสอบ</a>
-                </div>
+          <button class="dropdown-button" onclick="toggleDropdown('aircon-training')">หมวดหมู่: 🔧อบรมเกี่ยวกับเครื่องปรับอากาศ ▼</button>
+          <div class="dropdown-content" id="aircon-training">
+            <div class="course-item">
+              <h3>หลักสูตร 1: เรื่อง ความปลอดภัยในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
+              <p>ความปลอดภัยในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด คือ การดำเนินการติดตั้งโดยคำนึงถึงการลดความเสี่ยงจากอันตรายที่อาจเกิดขึ้น เช่น ไฟฟ้าดูด ไฟฟ้าช็อต อัคคีภัย การรั่วไหลของสารทำความเย็น หรือการทำงานบนที่สูง โดยมีมาตรการควบคุมความเสี่ยงตามหลักวิศวกรรมและความปลอดภัย</p>
+              <a href="courses1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkVINTVDUldVQkZPWEhZVkQ0V1I5TTlWSi4u " class="btn" target="_blank">เริ่มทดสอบ</a>
             </div>
+            <div class="course-item">
+              <h3>หลักสูตร 2: เรื่อง เครื่องมือและอุปกรณ์ในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
+              <p>เพื่อให้ผู้เรียนสามารถรู้จัก เลือกใช้ และใช้งานเครื่องมือรวมถึงอุปกรณ์ต่าง ๆ ได้อย่างถูกต้องและปลอดภัย ในกระบวนการติดตั้งเครื่องปรับอากาศแบบโซลาร์ไฮบริด</p>
+              <a href="courses2.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUM09ERTA1TEtFRUJLQzNZMU5ESEFXT1lPSC4u " class="btn" target="_blank">เริ่มทดสอบ</a>
+            </div>
+            <div class="course-item">
+              <h3>หลักสูตร 3: เรื่อง ระบบการทำงานของเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
+              <p>เพื่อให้ผู้เรียนเข้าใจหลักการทำงานของเครื่องปรับอากาศแบบโซลาร์ไฮบริด ทั้งระบบพลังงานแสงอาทิตย์และระบบทำความเย็น สามารถอธิบายกระบวนการทำงาน และวิเคราะห์ระบบเบื้องต้นได้</p>
+              <a href="courses3.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkhQOURNN1pSWFJMVkFGTjdIUzBVS0wxNy4u " class="btn" target="_blank">เริ่มทดสอบ</a>
+            </div>
+            <div class="course-item">
+              <h3>หลักสูตร 4: เรื่อง งานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
+              <p>เพื่อให้ผู้เรียนมีความรู้และทักษะในการติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริดอย่างถูกต้องตามหลักวิศวกรรม มีขั้นตอนที่เป็นระบบ ปลอดภัย และมีประสิทธิภาพ</p>
+              <a href="courses4.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkVINTVDUldVQkZPWEhZVkQ0V1I5TTlWSi4u " class="btn" target="_blank">เริ่มทดสอบ</a>
+            </div>
+            <div class="course-item">
+              <h3>หลักสูตร 5: เรื่อง ข้อควรรู้ในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
+              <p>เครื่องปรับอากาศโซลาร์ไฮบริดทำงานร่วมกันระหว่างระบบพลังงานแสงอาทิตย์ (DC) และไฟฟ้ากระแสสลับจากการไฟฟ้า (AC)</p>
+              <a href="courses5.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkVINTVDUldVQkZPWEhZVkQ0V1I5TTlWSi4u " class="btn" target="_blank">เริ่มทดสอบ</a>
+            </div>
+          </div>
         </div>
 
+        <!-- Electricity Training -->
         <div class="dropdown">
-            <button class="dropdown-button" onclick="toggleDropdown('electricity-training')">หมวดหมู่: 🔧อบรมเกี่ยวกับไฟฟ้า ▼</button>
-            <div class="dropdown-content" id="electricity-training">
-                <div class="course-item">
-                    <h3>หลักสูตร 1: พื้นฐานระบบไฟฟ้า</h3>
-                    <p>เรียนรู้พื้นฐานการติดตั้งและบำรุงรักษาระบบไฟฟ้า</p>
-                    <a href="courses3.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-                    <a href="#" class="btn" target="_blank">เริ่มทดสอบ</a>
-                </div>
+          <button class="dropdown-button" onclick="toggleDropdown('electricity-training')">หมวดหมู่: 🔧อบรมเกี่ยวกับไฟฟ้า ▼</button>
+          <div class="dropdown-content" id="electricity-training">
+            <div class="course-item">
+              <h3>หลักสูตร 1: พื้นฐานระบบไฟฟ้า</h3>
+              <p>เรียนรู้พื้นฐานการติดตั้งและบำรุงรักษาระบบไฟฟ้า</p>
+              <a href="courses-electricity1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+              <a href="#" class="btn" target="_blank">เริ่มทดสอบ</a>
             </div>
+          </div>
         </div>
 
+        <!-- Kaizen Training -->
         <div class="dropdown">
-            <button class="dropdown-button" onclick="toggleDropdown('kaizen-training')">หมวดหมู่: 🔧อบรมเกี่ยวกับ Kaizen ▼</button>
-            <div class="dropdown-content" id="kaizen-training">
-                <div class="course-item">
-                    <h3>หลักสูตร 1: การปรับปรุงงานแบบ Kaizen</h3>
-                    <p>เรียนรู้แนวคิดและวิธีการปรับปรุงงานอย่างต่อเนื่อง</p>
-                    <a href="courses-keizen1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-                    <a href="https://forms.office.com/pages/responsepage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNklRVFY3N1MwQVNVOVhMWVJOQkZVUU9HWi4u&origin=lprLink&route=shorturl" class="btn" target="_blank">เริ่มทดสอบ</a>
-                </div>
+          <button class="dropdown-button" onclick="toggleDropdown('kaizen-training')">หมวดหมู่: 🔧อบรมเกี่ยวกับ Kaizen ▼</button>
+          <div class="dropdown-content" id="kaizen-training">
+            <div class="course-item">
+              <h3>หลักสูตร 1: การปรับปรุงงานแบบ Kaizen</h3>
+              <p>เรียนรู้แนวคิดและวิธีการปรับปรุงงานอย่างต่อเนื่อง</p>
+              <a href="courses-keizen1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNklRVFY3N1MwQVNVOVhMWVJOQkZVUU9HWi4u&origin=lprLink&route=shorturl " class="btn" target="_blank">เริ่มทดสอบ</a>
             </div>
+          </div>
         </div>
 
+        <!-- 5S Training -->
         <div class="dropdown">
-            <button class="dropdown-button" onclick="toggleDropdown('5s-training')">หมวดหมู่: 🔧อบรมเกี่ยวกับ 5ส. ▼</button>
-            <div class="dropdown-content" id="5s-training">
-                <div class="course-item">
-                    <h3>หลักสูตร 1: แนวคิดและวิธีการปฏิบัติตาม 5ส.</h3>
-                    <p>เรียนรู้พื้นฐานและประโยชน์ของการนำ 5ส. มาใช้ในองค์กร</p>
-                    <a href="courses-5S.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNVlUVzFLUExUMUlCVEpOTkgzWVlZNlZCWi4u" class="btn" target="_blank">เริ่มทดสอบ</a>
-                </div>
+          <button class="dropdown-button" onclick="toggleDropdown('5s-training')">หมวดหมู่: 🔧อบรมเกี่ยวกับ 5ส. ▼</button>
+          <div class="dropdown-content" id="5s-training">
+            <div class="course-item">
+              <h3>หลักสูตร 1: แนวคิดและวิธีการปฏิบัติตาม 5ส.</h3>
+              <p>เรียนรู้พื้นฐานและประโยชน์ของการนำ 5ส. มาใช้ในองค์กร</p>
+              <a href="courses-5S.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNVlUVzFLUExUMUlCVEpOTkgzWVlZNlZCWi4u " class="btn" target="_blank">เริ่มทดสอบ</a>
             </div>
+          </div>
         </div>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
-    </footer>
-    <script>
-        function toggleDropdown(id) {
-            const content = document.getElementById(id);
-            const button = document.querySelector(`[onclick="toggleDropdown('${id}')"]`);
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                button.innerHTML = button.innerHTML.replace("▲", "▼");
-            } else {
-                content.style.display = "block";
-                button.innerHTML = button.innerHTML.replace("▼", "▲");
-            }
-        }
-    </script>
+  <footer>
+    <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
+  </footer>
+
+  <script>
+    function toggleDropdown(id) {
+      const content = document.getElementById(id);
+      const button = document.querySelector(`[onclick="toggleDropdown('${id}')"]`);
+      if (content.style.display === "block") {
+        content.style.display = "none";
+        button.innerHTML = button.innerHTML.replace("▲", "▼");
+      } else {
+        content.style.display = "block";
+        button.innerHTML = button.innerHTML.replace("▼", "▲");
+      }
+    }
+  </script>
 </body>
 </html>

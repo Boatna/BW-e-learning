@@ -1,305 +1,406 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-Learning สำหรับอบรมพนักงาน</title>
-    <!-- Favicon สำหรับเบราว์เซอร์ -->
-<link rel="icon" href="favicon.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>e-Learning สำหรับอบรมพนักงาน</title>
 
-<!-- สำหรับ iOS (Apple Devices) -->
-<link rel="apple-touch-icon" href="Favicon (2).png">
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="Favicon (2).png" />
+  <link rel="manifest" href="manifest.json" />
 
-<!-- สำหรับ Android (ใช้กับ Add to Home Screen) -->
-<link rel="manifest" href="manifest.json">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Prompt', sans-serif;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        header {
-            background: linear-gradient(135deg, #0077ff, #00bfff);
-            color: white;
-            padding: 20px 0;
-        }
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .logo {
-            height: 50px;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 10px 15px;
-            border-radius: 20px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-        .footer-container {
-            background-color: #ffffff;
-            color: #212529;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .footer-container a {
-            color: #0077ff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-container a:hover {
-            color: #0056b3;
-        }
-        .section {
-            margin-bottom: 30px;
-            padding: 25px;
-            background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        .section:hover {
-            transform: translateY(-5px);
-        }
-        .section h2 {
-            font-size: 1.6rem;
-            color: #0077ff;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        .section p {
-            font-size: 1rem;
-            margin-bottom: 10px;
-            text-align: justify;
-        }
-        .section ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-        .section table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .section table th,
-        .section table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        .section table th {
-            background-color: #0077ff;
-            color: white;
-        }
-        .section table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .btn, .download-button {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 20px;
-            background: linear-gradient(135deg, #0077ff, #00bfff);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .btn:hover, .download-button:hover {
-            background: linear-gradient(135deg, #0056b3, #0099cc);
-            transform: scale(1.1);
-        }
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .action-buttons a {
-            white-space: nowrap; /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
-        }
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            nav ul {
-                flex-direction: row;
-                gap: 10px;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-            .section h2 {
-                font-size: 1.4rem;
-            }
-            .section p {
-                font-size: 0.9rem;
-            }
-            .btn, .download-button {
-                font-size: 0.9rem;
-                padding: 10px 15px;
-            }
-            .action-buttons {
-                flex-direction: row;
-                gap: 10px;
-                flex-wrap: wrap;
-            }
-        }
-        @media (max-width: 480px) {
-            .logo {
-                height: 40px;
-            }
-            .header-container h1 {
-                font-size: 1rem;
-            }
-            .section h2 {
-                font-size: 1.2rem;
-            }
-            .section p {
-                font-size: 0.8rem;
-            }
-            .section table {
-                font-size: 0.8rem;
-            }
-            .btn, .download-button {
-                font-size: 0.8rem;
-                padding: 8px 12px;
-            }
-            .action-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-    </style>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Kanit', sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* Skip to Content */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #0077ff;
+      color: white;
+      padding: 10px;
+      z-index: 100;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #216fc7, #216fc7);
+      color: white;
+      padding: 20px 0;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      height: 80px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 10px 15px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    main {
+      padding: 40px 20px;
+    }
+
+    h2 {
+      color: #216fc7;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Section Styling */
+    .section {
+      background-color: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      margin-bottom: 30px;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      color: #216fc7;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .section p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      text-align: justify;
+      color: #555;
+    }
+
+    .section ul {
+      list-style-type: disc;
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    .section table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .section table th,
+    .section table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    .section table th {
+      background-color: #216fc7;
+      color: white;
+    }
+
+    .section table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* Buttons */
+    .btn,
+    .download-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover,
+    .download-button:hover {
+      background: linear-gradient(135deg, #0056b3, #003d80);
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 86, 179, 0.3);
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .action-buttons a {
+      white-space: nowrap;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #ffffff;
+      color: #212529;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    footer a {
+      color: #0077ff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #0056b3;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav ul {
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .section h2 {
+        font-size: 1.4rem;
+      }
+
+      .section p {
+        font-size: 0.9rem;
+      }
+
+      .btn,
+      .download-button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+      }
+
+      .action-buttons {
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        height: 40px;
+      }
+
+      .header-container h1 {
+        font-size: 1.1rem;
+      }
+
+      .section h2 {
+        font-size: 1.2rem;
+      }
+
+      .section p {
+        font-size: 0.8rem;
+      }
+
+      .section table {
+        font-size: 0.8rem;
+      }
+
+      .btn,
+      .download-button {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo">
-            <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
-            <nav>
-                <ul style="display: flex; gap: 20px;">
-                    <li><a href="index.html">หน้าแรก</a></li>
-                    <li><a href="course.html">หลักสูตร</a></li>
-                    <li><a href="news.html">ข่าวสาร</a></li>
-                    <li><a href="contact.html">ติดต่อเรา</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
 
-    <div class="section">
+  <header>
+    <div class="header-container">
+      <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" aria-hidden="true" />
+      <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">หน้าแรก</a></li>
+          <li><a href="course.html">หลักสูตร</a></li>
+          <li><a href="news.html">ข่าวสาร</a></li>
+          <li><a href="contact.html">ติดต่อเรา</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section">
+      <div class="container">
         <h2>5ส (5S) คืออะไร?</h2>
         <p>5ส (5S) คือ เครื่องมือพื้นฐานในการจัดระเบียบสถานที่ทำงานอย่างมีประสิทธิภาพและปลอดภัย ซึ่งประกอบด้วย 5 ขั้นตอนจากภาษาญี่ปุ่น ได้แก่:</p>
         <ul>
-            <li><strong>สะสาง (Seiri)</strong> – แยกของที่จำเป็นกับไม่จำเป็น</li>
-            <li><strong>สะดวก (Seiton)</strong> – จัดวางสิ่งของให้ค้นหาและใช้งานได้ง่าย</li>
-            <li><strong>สะอาด (Seiso)</strong> – ทำความสะอาดสถานที่และอุปกรณ์</li>
-            <li><strong>สร้างมาตรฐาน (Seiketsu)</strong> – รักษาความเป็นระเบียบให้คงอยู่</li>
-            <li><strong>สร้างวินัย (Shitsuke)</strong> – ปลูกฝังวินัยในการปฏิบัติอย่างต่อเนื่อง</li>
+          <li><strong>สะสาง (Seiri)</strong> – แยกของที่จำเป็นกับไม่จำเป็น</li>
+          <li><strong>สะดวก (Seiton)</strong> – จัดวางสิ่งของให้ค้นหาและใช้งานได้ง่าย</li>
+          <li><strong>สะอาด (Seiso)</strong> – ทำความสะอาดสถานที่และอุปกรณ์</li>
+          <li><strong>สร้างมาตรฐาน (Seiketsu)</strong> – รักษาความเป็นระเบียบให้คงอยู่</li>
+          <li><strong>สร้างวินัย (Shitsuke)</strong> – ปลูกฝังวินัยในการปฏิบัติอย่างต่อเนื่อง</li>
         </ul>
         <p>🛠️ <strong>5ส = เครื่องมือ + ระบบ + กิจกรรม</strong> ที่ผสานกันเพื่อสร้าง "คุณภาพชีวิตและประสิทธิภาพการทำงาน"</p>
-    </div>
+      </div>
+    </section>
 
-    <div class="section">
+    <section class="section">
+      <div class="container">
         <h2>ทำไมต้องทำ 5ส?</h2>
         <p>เหตุผลหลัก:</p>
         <ul>
-            <li>เพื่อป้องกันอุบัติเหตุ – ลดสิ่งกีดขวาง และความไม่เป็นระเบียบ</li>
-            <li>เพื่อความสะดวกในการทำงาน – เข้าถึงอุปกรณ์ง่าย ค้นหาของไว</li>
-            <li>เพื่อเพิ่มประสิทธิภาพการทำงาน – ลดเวลา ลดความสูญเปล่า</li>
-            <li>เพื่อใช้ทรัพยากรอย่างคุ้มค่า – ลดต้นทุนโดยใช้แต่ของจำเป็น</li>
-            <li>เพื่อสร้างบรรยากาศที่ดี – สภาพแวดล้อมสะอาดและปลอดภัย</li>
-            <li>เพื่อสร้างวินัยและความภาคภูมิใจ – ส่งเสริมให้ทุกคนมีส่วนร่วมและรู้สึกเป็นเจ้าของ</li>
+          <li>เพื่อป้องกันอุบัติเหตุ – ลดสิ่งกีดขวาง และความไม่เป็นระเบียบ</li>
+          <li>เพื่อความสะดวกในการทำงาน – เข้าถึงอุปกรณ์ง่าย ค้นหาของไว</li>
+          <li>เพื่อเพิ่มประสิทธิภาพการทำงาน – ลดเวลา ลดความสูญเปล่า</li>
+          <li>เพื่อใช้ทรัพยากรอย่างคุ้มค่า – ลดต้นทุนโดยใช้แต่ของจำเป็น</li>
+          <li>เพื่อสร้างบรรยากาศที่ดี – สภาพแวดล้อมสะอาดและปลอดภัย</li>
+          <li>เพื่อสร้างวินัยและความภาคภูมิใจ – ส่งเสริมให้ทุกคนมีส่วนร่วมและรู้สึกเป็นเจ้าของ</li>
         </ul>
-    </div>
+      </div>
+    </section>
 
-    <div class="section">
+    <section class="section">
+      <div class="container">
         <h2>ประโยชน์ที่องค์กรจะได้รับจากระบบ 5ส</h2>
         <table>
-            <thead>
-                <tr>
-                    <th>ด้าน</th>
-                    <th>ประโยชน์</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>P – Productivity</td>
-                    <td>ปริมาณงานเพิ่มขึ้น</td>
-                </tr>
-                <tr>
-                    <td>Q – Quality</td>
-                    <td>คุณภาพงานดีขึ้น</td>
-                </tr>
-                <tr>
-                    <td>C – Cost</td>
-                    <td>ลดค่าใช้จ่ายไม่จำเป็น</td>
-                </tr>
-                <tr>
-                    <td>D – Delivery</td>
-                    <td>ส่งมอบงานได้รวดเร็วขึ้น</td>
-                </tr>
-                <tr>
-                    <td>S – Safety</td>
-                    <td>ความปลอดภัยในพื้นที่ทำงาน</td>
-                </tr>
-                <tr>
-                    <td>M – Morale</td>
-                    <td>ขวัญและกำลังใจของพนักงานดีขึ้น</td>
-                </tr>
-                <tr>
-                    <td>E – Environment</td>
-                    <td>สิ่งแวดล้อมดีขึ้น ลดโลกร้อน</td>
-                </tr>
-                <tr>
-                    <td>E – Ethic</td>
-                    <td>จรรยาบรรณ และคุณธรรมเพิ่มขึ้น</td>
-                </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <th>ด้าน</th>
+              <th>ประโยชน์</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>P – Productivity</td>
+              <td>ปริมาณงานเพิ่มขึ้น</td>
+            </tr>
+            <tr>
+              <td>Q – Quality</td>
+              <td>คุณภาพงานดีขึ้น</td>
+            </tr>
+            <tr>
+              <td>C – Cost</td>
+              <td>ลดค่าใช้จ่ายไม่จำเป็น</td>
+            </tr>
+            <tr>
+              <td>D – Delivery</td>
+              <td>ส่งมอบงานได้รวดเร็วขึ้น</td>
+            </tr>
+            <tr>
+              <td>S – Safety</td>
+              <td>ความปลอดภัยในพื้นที่ทำงาน</td>
+            </tr>
+            <tr>
+              <td>M – Morale</td>
+              <td>ขวัญและกำลังใจของพนักงานดีขึ้น</td>
+            </tr>
+            <tr>
+              <td>E – Environment</td>
+              <td>สิ่งแวดล้อมดีขึ้น ลดโลกร้อน</td>
+            </tr>
+            <tr>
+              <td>E – Ethic</td>
+              <td>จรรยาบรรณ และคุณธรรมเพิ่มขึ้น</td>
+            </tr>
+          </tbody>
         </table>
-    </div>
+      </div>
+    </section>
 
-    <div class="action-buttons">
-        <a href="https://www.youtube.com/@JJJJJHAAAAA" class="btn" target="_blank">Video</a>
-        <a href="หลักสูตร5สขั้นพื้นฐาน 2025 (19-03-25).pdf" download class="download-button">เอกสารหลักสูตรการอบรม</a>
-        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNVlUVzFLUExUMUlCVEpOTkgzWVlZNlZCWi4u" class="btn" target="_blank">เริ่มทดสอบ</a>
-    </div>
+    <section class="section">
+      <div class="container">
+        <div class="action-buttons">
+          <a href="https://www.youtube.com/ @JJJJJHAAAAA" class="btn" target="_blank">Video</a>
+          <a href="หลักสูตร5สขั้นพื้นฐาน 2025 (19-03-25).pdf" download class="download-button">เอกสารหลักสูตรการอบรม</a>
+          <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNVlUVzFLUExUMUlCVEpOTkgzWVlZNlZCWi4u " class="btn" target="_blank">เริ่มทดสอบ</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <div class="footer-container">
-        <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
+  <footer>
+    <div class="container">
+      <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-    <script>
-        // เพิ่มฟังก์ชัน JavaScript หากต้องการใช้งานเพิ่มเติม
-    </script>
+  </footer>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js "></script>
+  <script>
+    // เพิ่มฟังก์ชัน JavaScript หากต้องการใช้งานเพิ่มเติม
+  </script>
 </body>
 </html>

@@ -11,7 +11,7 @@
     <link rel="manifest" href="manifest.json">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Prompt :wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -21,7 +21,7 @@
         }
 
         body {
-            font-family: 'Prompt', sans-serif;
+            font-family: 'Kanit', sans-serif;
             line-height: 1.6;
             background-color: #f9f9f9;
             color: #333;
@@ -183,74 +183,76 @@
         }
 
         /* Responsive Design */
-         @media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        text-align: center;
-    }
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
 
-    nav ul {
-        flex-direction: row;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
+            nav ul {
+                flex-direction: row;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
 
-    .news-item {
-        padding: 20px 15px;
-    }
+            .news-item {
+                padding: 20px 15px;
+            }
 
-    .news-item img {
-        height: 250px;
-        border-radius: 8px;
-    }
+            .news-item img {
+                height: 250px;
+                border-radius: 8px;
+            }
 
-    .news-item h3 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-    }
+            .news-item h3 {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
 
-    .news-item p {
-        font-size: 0.95rem;
-        line-height: 1.7;
-    }
-}
+            .news-item p {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+        }
 
-@media (max-width: 480px) {
-    .logo {
-        height: 40px;
-    }
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
+            }
 
-    .header-container h1 {
-        font-size: 1.1rem;
-    }
+            .header-container h1 {
+                font-size: 1.1rem;
+            }
 
-    .news-item {
-        padding: 15px 10px;
-    }
+            .news-item {
+                padding: 15px 10px;
+            }
 
-    .news-item img {
-        height: 200px;
-        border-radius: 6px;
-    }
+            .news-item img {
+                height: 200px;
+                border-radius: 6px;
+            }
 
-    .news-item h3 {
-        font-size: 1.1rem;
-        margin-bottom: 8px;
-    }
+            .news-item h3 {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
 
-    .news-item p {
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
+            .news-item p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
 
-    nav ul li a {
-        font-size: 0.8rem;
-        padding: 8px 12px;
-    }
-}
+            nav ul li a {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+        }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
+
     <header>
         <div class="header-container">
             <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" aria-hidden="true">
@@ -266,7 +268,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section id="news">
             <div class="container">
                 <h2>ข่าวสารและบทความ</h2>
