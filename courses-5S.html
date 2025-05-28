@@ -4,30 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>e-Learning สำหรับอบรมพนักงาน</title>
-
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="Favicon (2).png" />
   <link rel="manifest" href="manifest.json" />
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
-
-
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Kanit', sans-serif;
       line-height: 1.6;
       background-color: #f9f9f9;
       color: #333;
     }
-
     /* Skip to Content */
     .skip-link {
       position: absolute;
@@ -39,18 +33,15 @@
       z-index: 100;
       text-decoration: none;
     }
-
     .skip-link:focus {
       top: 0;
     }
-
     /* Header */
     header {
       background: linear-gradient(135deg, #216fc7, #216fc7);
       color: white;
       padding: 20px 0;
     }
-
     .header-container {
       display: flex;
       align-items: center;
@@ -59,17 +50,14 @@
       margin: 0 auto;
       padding: 0 20px;
     }
-
     .logo {
       height: 80px;
     }
-
     nav ul {
       list-style: none;
       display: flex;
       gap: 20px;
     }
-
     nav ul li a {
       color: white;
       text-decoration: none;
@@ -78,12 +66,10 @@
       border-radius: 20px;
       transition: all 0.3s ease;
     }
-
     nav ul li a:hover {
       background-color: rgba(255, 255, 255, 0.2);
       transform: scale(1.05);
     }
-
     /* Container */
     .container {
       width: 100%;
@@ -91,18 +77,15 @@
       margin: 0 auto;
       padding: 0 20px;
     }
-
     main {
       padding: 40px 20px;
     }
-
     h2 {
       color: #216fc7;
       margin-bottom: 30px;
       text-align: center;
       font-weight: 600;
     }
-
     /* Section Styling */
     .section {
       background-color: white;
@@ -112,32 +95,27 @@
       transition: transform 0.3s ease;
       margin-bottom: 30px;
     }
-
     .section:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
-
     .section h2 {
       font-size: 1.6rem;
       color: #216fc7;
       margin-bottom: 15px;
       text-align: center;
     }
-
     .section p {
       font-size: 1rem;
       margin-bottom: 10px;
       text-align: justify;
       color: #555;
     }
-
     .section ul {
       list-style-type: disc;
       margin-left: 20px;
       margin-bottom: 15px;
     }
-
     .section table {
       width: 100%;
       border-collapse: collapse;
@@ -145,23 +123,19 @@
       border-radius: 10px;
       overflow: hidden;
     }
-
     .section table th,
     .section table td {
       border: 1px solid #ddd;
       padding: 12px;
       text-align: left;
     }
-
     .section table th {
       background-color: #216fc7;
       color: white;
     }
-
     .section table tr:nth-child(even) {
       background-color: #f9f9f9;
     }
-
     /* Buttons */
     .btn,
     .download-button {
@@ -175,14 +149,12 @@
       font-weight: 500;
       transition: all 0.3s ease;
     }
-
     .btn:hover,
     .download-button:hover {
       background: linear-gradient(135deg, #0056b3, #003d80);
       transform: scale(1.05);
       box-shadow: 0 4px 10px rgba(0, 86, 179, 0.3);
     }
-
     /* Action Buttons */
     .action-buttons {
       display: flex;
@@ -191,11 +163,9 @@
       flex-wrap: wrap;
       margin-top: 30px;
     }
-
     .action-buttons a {
       white-space: nowrap;
     }
-
     /* Footer */
     footer {
       background-color: #ffffff;
@@ -204,88 +174,117 @@
       text-align: center;
       box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     }
-
     footer a {
       color: #0077ff;
       text-decoration: none;
       transition: color 0.3s;
     }
-
     footer a:hover {
       color: #0056b3;
     }
-
     /* Responsive Design */
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
         text-align: center;
       }
-
       nav ul {
         flex-direction: row;
         gap: 10px;
         flex-wrap: wrap;
       }
-
       .section h2 {
         font-size: 1.4rem;
       }
-
       .section p {
         font-size: 0.9rem;
       }
-
       .btn,
       .download-button {
         font-size: 0.9rem;
         padding: 10px 15px;
       }
-
       .action-buttons {
         flex-direction: row;
         gap: 10px;
         flex-wrap: wrap;
       }
     }
-
     @media (max-width: 480px) {
       .logo {
         height: 40px;
       }
-
       .header-container h1 {
         font-size: 1.1rem;
       }
-
       .section h2 {
         font-size: 1.2rem;
       }
-
       .section p {
         font-size: 0.8rem;
       }
-
       .section table {
         font-size: 0.8rem;
       }
-
       .btn,
       .download-button {
         font-size: 0.8rem;
         padding: 8px 12px;
       }
-
       .action-buttons {
         flex-direction: column;
         gap: 10px;
       }
     }
+
+    /* Custom styling for the 5S section */
+    .steps-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .steps-list li {
+      background-color: #f1f9ff;
+      border-left: 5px solid #216fc7;
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .steps-list li:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .video-btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      color: white;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      text-decoration: none;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .video-btn:hover {
+      background: linear-gradient(135deg, #0056b3, #003d80);
+      transform: scale(1.05);
+    }
+
+    .summary-box {
+      background-color: #e8f4e5;
+      border-left: 5px solid #28a745;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
-
   <header>
     <div class="header-container">
       <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" aria-hidden="true" />
@@ -306,14 +305,31 @@
       <div class="container">
         <h2>5ส (5S) คืออะไร?</h2>
         <p>5ส (5S) คือ เครื่องมือพื้นฐานในการจัดระเบียบสถานที่ทำงานอย่างมีประสิทธิภาพและปลอดภัย ซึ่งประกอบด้วย 5 ขั้นตอนจากภาษาญี่ปุ่น ได้แก่:</p>
-        <ul>
-          <li><strong>สะสาง (Seiri)</strong> – แยกของที่จำเป็นกับไม่จำเป็น</li>
-          <li><strong>สะดวก (Seiton)</strong> – จัดวางสิ่งของให้ค้นหาและใช้งานได้ง่าย</li>
-          <li><strong>สะอาด (Seiso)</strong> – ทำความสะอาดสถานที่และอุปกรณ์</li>
-          <li><strong>สร้างมาตรฐาน (Seiketsu)</strong> – รักษาความเป็นระเบียบให้คงอยู่</li>
-          <li><strong>สร้างวินัย (Shitsuke)</strong> – ปลูกฝังวินัยในการปฏิบัติอย่างต่อเนื่อง</li>
+        <ul class="steps-list">
+          <li>
+            <strong>สะสาง (Seiri)</strong> – แยกของที่จำเป็นกับไม่จำเป็น
+            <a href="https://youtu.be/WtXUoulQIeE " class="video-btn" target="_blank">▶️ Video สะสาง</a>
+          </li>
+          <li>
+            <strong>สะดวก (Seiton)</strong> – จัดวางสิ่งของให้ค้นหาและใช้งานได้ง่าย
+            <a href="https://youtu.be/TMy6mko6zHU " class="video-btn" target="_blank">▶️ Video สะดวก</a>
+          </li>
+          <li>
+            <strong>สะอาด (Seiso)</strong> – ทำความสะอาดสถานที่และอุปกรณ์
+            <a href="https://youtu.be/uWs4BnDSj4U " class="video-btn" target="_blank">▶️ Video สะอาด</a>
+          </li>
+          <li>
+            <strong>สร้างมาตรฐาน (Seiketsu)</strong> – รักษาความเป็นระเบียบให้คงอยู่
+            <a href="https://youtu.be/-M2K_FoaU0U " class="video-btn" target="_blank">▶️ Video สร้างมาตรฐาน</a>
+          </li>
+          <li>
+            <strong>สร้างวินัย (Shitsuke)</strong> – ปลูกฝังวินัยในการปฏิบัติอย่างต่อเนื่อง
+            <a href="https://youtu.be/AjMzM-H9ZQg " class="video-btn" target="_blank">▶️ Video สร้างวินัย</a>
+          </li>
         </ul>
-        <p>🛠️ <strong>5ส = เครื่องมือ + ระบบ + กิจกรรม</strong> ที่ผสานกันเพื่อสร้าง "คุณภาพชีวิตและประสิทธิภาพการทำงาน"</p>
+        <div class="summary-box">
+          <p>🛠️ <strong>5ส = เครื่องมือ + ระบบ + กิจกรรม</strong> ที่ผสานกันเพื่อสร้าง "คุณภาพชีวิตและประสิทธิภาพการทำงาน"</p>
+        </div>
       </div>
     </section>
 
@@ -383,9 +399,8 @@
     <section class="section">
       <div class="container">
         <div class="action-buttons">
-          <a href="https://www.youtube.com/ @JJJJJHAAAAA" class="btn" target="_blank">Video</a>
           <a href="หลักสูตร5สขั้นพื้นฐาน 2025 (19-03-25).pdf" download class="download-button">เอกสารหลักสูตรการอบรม</a>
-          <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNVlUVzFLUExUMUlCVEpOTkgzWVlZNlZCWi4u " class="btn" target="_blank">เริ่มทดสอบ</a>
+          <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNVlUVzFLUExUMUlCVEpOTkgzWVlZNlZCWi4u  " class="btn" target="_blank">เริ่มทดสอบ</a>
         </div>
       </div>
     </section>
