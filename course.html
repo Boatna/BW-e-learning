@@ -10,6 +10,8 @@
   <link rel="manifest" href="manifest.json" />
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
   <style>
     * {
       margin: 0;
@@ -22,16 +24,19 @@
       background-color: #f9f9f9; 
       color: #333;
     }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
     /* Skip to Content */
     .skip-link {
       position: absolute;
       top: -40px;
       left: 0;
-      background: #0077ff;
+      background: #007bff;
       color: white;
       padding: 10px;
       z-index: 100;
-      text-decoration: none;
     }
     .skip-link:focus {
       top: 0;
@@ -60,7 +65,6 @@
     }
     nav ul li a {
       color: white;
-      text-decoration: none;
       font-size: 0.9rem;
       padding: 10px 15px;
       border-radius: 20px;
@@ -70,15 +74,14 @@
       background-color: rgba(255, 255, 255, 0.2);
       transform: scale(1.05);
     }
-    /* Main Section */
     main {
       padding: 40px 20px;
     }
     h2 {
       color: #216fc7;
-      margin-bottom: 30px;
       text-align: center;
       font-weight: 600;
+      margin-bottom: 30px;
     }
     /* Dropdown Course Sections */
     #courses {
@@ -106,9 +109,6 @@
     }
     .dropdown-button:hover {
       background: linear-gradient(135deg, #1a5fae, #1a5fae);
-    }
-    .dropdown-button .icon {
-      font-size: 1.2rem;
     }
     .dropdown-content {
       display: none;
@@ -160,7 +160,6 @@
     }
     footer a {
       color: #0077ff;
-      text-decoration: none;
       transition: color 0.3s;
     }
     footer a:hover {
@@ -223,7 +222,7 @@
   <header>
     <div class="header-container">
       <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" aria-hidden="true" />
-      <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
+      <h1>E-Learning สำหรับอบรมพนักงาน</h1>
       <nav>
         <ul>
           <li><a href="index.html">หน้าแรก</a></li>
@@ -236,117 +235,89 @@
   </header>
   <main id="main-content">
     <section id="courses">
-      <div class="container">
-        <h2>หลักสูตรที่เรามี</h2>
-        <!-- Aircon Training -->
-        <div class="dropdown">
-          <button class="dropdown-button" onclick="toggleDropdown('aircon-training')">
-            <span class="icon">❄️</span> หมวดหมู่: เครื่องปรับอากาศโซลาร์ไฮบริด ▼
-          </button>
-          <div class="dropdown-content" id="aircon-training">
-            <div class="course-item">
-              <h3>หลักสูตร 1: เรื่อง ความปลอดภัยในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-              <p>ความปลอดภัยในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด คือ การดำเนินการติดตั้งโดยคำนึงถึงการลดความเสี่ยงจากอันตรายที่อาจเกิดขึ้น เช่น ไฟฟ้าดูด ไฟฟ้าช็อต อัคคีภัย การรั่วไหลของสารทำความเย็น หรือการทำงานบนที่สูง โดยมีมาตรการควบคุมความเสี่ยงตามหลักวิศวกรรมและความปลอดภัย</p>
-              <a href="courses1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkVINTVDUldVQkZPWEhZVkQ0V1I5TTlWSi4u " class="btn" target="_blank">เริ่มทดสอบ</a>
-            </div>
-            <div class="course-item">
-              <h3>หลักสูตร 2: เรื่อง เครื่องมือและอุปกรณ์ในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-              <p>เพื่อให้ผู้เรียนสามารถรู้จัก เลือกใช้ และใช้งานเครื่องมือรวมถึงอุปกรณ์ต่าง ๆ ได้อย่างถูกต้องและปลอดภัย ในกระบวนการติดตั้งเครื่องปรับอากาศแบบโซลาร์ไฮบริด</p>
-              <a href="courses2.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUM09ERTA1TEtFRUJLQzNZMU5ESEFXT1lPSC4u " class="btn" target="_blank">เริ่มทดสอบ</a>
-            </div>
-            <div class="course-item">
-              <h3>หลักสูตร 3: เรื่อง ระบบการทำงานของเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-              <p>เพื่อให้ผู้เรียนเข้าใจหลักการทำงานของเครื่องปรับอากาศแบบโซลาร์ไฮบริด ทั้งระบบพลังงานแสงอาทิตย์และระบบทำความเย็น สามารถอธิบายกระบวนการทำงาน และวิเคราะห์ระบบเบื้องต้นได้</p>
-              <a href="courses3.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkhQOURNN1pSWFJMVkFGTjdIUzBVS0wxNy4u " class="btn" target="_blank">เริ่มทดสอบ</a>
-            </div>
-            <div class="course-item">
-              <h3>หลักสูตร 4: เรื่อง งานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-              <p>เพื่อให้ผู้เรียนมีความรู้และทักษะในการติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริดอย่างถูกต้องตามหลักวิศวกรรม มีขั้นตอนที่เป็นระบบ ปลอดภัย และมีประสิทธิภาพ</p>
-              <a href="courses4.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkVINTVDUldVQkZPWEhZVkQ0V1I5TTlWSi4u " class="btn" target="_blank">เริ่มทดสอบ</a>
-            </div>
-            <div class="course-item">
-              <h3>หลักสูตร 5: เรื่อง ข้อควรรู้ในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-              <p>เครื่องปรับอากาศโซลาร์ไฮบริดทำงานร่วมกันระหว่างระบบพลังงานแสงอาทิตย์ (DC) และไฟฟ้ากระแสสลับจากการไฟฟ้า (AC)</p>
-              <a href="courses5.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkVINTVDUldVQkZPWEhZVkQ0V1I5TTlWSi4u " class="btn" target="_blank">เริ่มทดสอบ</a>
-            </div>
+      <h2>หลักสูตรที่เรามี</h2>
+
+      <!-- Aircon Training -->
+      <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('aircon-training')">
+          <i class="fas fa-snowflake"></i> หมวดหมู่: เครื่องปรับอากาศโซลาร์ไฮบริด ▼
+        </button>
+        <div class="dropdown-content" id="aircon-training">
+          <div class="course-item">
+            <h3>หลักสูตร 1: เรื่อง ความปลอดภัยในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
+            <p>ความปลอดภัยในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด คือ การดำเนินการติดตั้งโดยคำนึงถึงการลดความเสี่ยงจากอันตรายที่อาจเกิดขึ้น เช่น ไฟฟ้าดูด ไฟฟ้าช็อต อัคคีภัย การรั่วไหลของสารทำความเย็น หรือการทำงานบนที่สูง โดยมีมาตรการควบคุมความเสี่ยงตามหลักวิศวกรรมและความปลอดภัย</p>
+            <a href="courses1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUQkVINTVDUldVQkZPWEhZVkQ0V1I5TTlWSi4u" class="btn" target="_blank">เริ่มทดสอบ</a>
           </div>
-        </div>
-        <!-- Electricity Training -->
-        <div class="dropdown">
-          <button class="dropdown-button" onclick="toggleDropdown('electricity-training')">
-            <span class="icon">⚡</span> หมวดหมู่: อบรมเกี่ยวกับไฟฟ้า ▼
-          </button>
-          <div class="dropdown-content" id="electricity-training">
-            <div class="course-item">
-              <h3>หลักสูตร 1: พื้นฐานระบบไฟฟ้า</h3>
-              <p>เรียนรู้พื้นฐานการติดตั้งและบำรุงรักษาระบบไฟฟ้า</p>
-              <a href="courses-electricity1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-              <a href="#" class="btn" target="_blank">เริ่มทดสอบ</a> 
-            </div>
-          </div>
-        </div>
-        <!-- Kaizen Training -->
-        <div class="dropdown">
-          <button class="dropdown-button" onclick="toggleDropdown('kaizen-training')">
-            <span class="icon">🎯</span> หมวดหมู่: การปรับปรุงงานแบบ Kaizen ▼
-          </button>
-          <div class="dropdown-content" id="kaizen-training">
-            <div class="course-item">
-              <h3>หลักสูตร 1: การปรับปรุงงานแบบ Kaizen</h3>
-              <p>เรียนรู้แนวคิดและวิธีการปรับปรุงงานอย่างต่อเนื่อง</p>
-              <a href="courses-keizen1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNklRVFY3N1MwQVNVOVhMWVJOQkZVUU9HWi4u&origin=lprLink&route=shorturl " class="btn" target="_blank">เริ่มทดสอบ</a>
-            </div>
-          </div>
-        </div>
-        <!-- 5S Training -->
-        <div class="dropdown">
-          <button class="dropdown-button" onclick="toggleDropdown('5s-training')">
-            <span class="icon">🧹</span> หมวดหมู่: การฝึกอบรม 5 ส. ▼
-          </button>
-          <div class="dropdown-content" id="5s-training">
-            <div class="course-item">
-              <h3>หลักสูตร 1: แนวคิดและวิธีการปฏิบัติตาม 5ส.</h3>
-              <p>เรียนรู้พื้นฐานและประโยชน์ของการนำ 5ส. มาใช้ในองค์กร</p>
-              <a href="courses-5S.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNVlUVzFLUExUMUlCVEpOTkgzWVlZNlZCWi4u " class="btn" target="_blank">เริ่มทดสอบ</a>
-            </div>
-          </div>
-        </div>
-        <!-- Safety Training -->
-        <div class="dropdown">
-          <button class="dropdown-button" onclick="toggleDropdown('safety-training')">
-            <span class="icon">🛡️</span> หมวดหมู่: การฝึกอบรมด้านความปลอดภัย ▼
-          </button>
-          <div class="dropdown-content" id="safety-training">
-            <div class="course-item">
-              <h3>หลักสูตร 1: หลักสูตรอุปกรณ์คุ้มครองความปลอดภัยส่วนบุคคล</h3>
-              <p>เรียนรู้เนื้อหาหลักสูตรอุปกรณ์คุ้มครองความปลอดภัยส่วนบุคคล</p>
-              <a href="safe.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-              <a href="#" class="btn" target="_blank">เริ่มทดสอบ</a> 
-            </div>
-          </div>
-        </div>
-        <!-- Small Air Conditioner Training -->
-        <div class="dropdown">
-          <button class="dropdown-button" onclick="toggleDropdown('small-air-conditioner-training')">
-            <span class="icon">🔧</span> หมวดหมู่: การสอนติดตั้งเครื่องปรับอากาศขนาดเล็ก ▼
-          </button>
-          <div class="dropdown-content" id="small-air-conditioner-training">
-            <div class="course-item">
-              <h3>หลักสูตรการสอนงานติดตั้งเครื่องปรับอากาศขนาดเล็ก</h3>
-              <p>เรียนรู้เนื้อหาหลักสูตรติดตั้งเครื่องปรับอากาศขนาดเล็ก</p>
-              <a href="small-air.html" class="btn">ดูรายละเอียดหลักสูตร</a>
-              <a href="#" class="btn" target="_blank">เริ่มทดสอบ</a>
-            </div>
+          <div class="course-item">
+            <h3>หลักสูตร 2: เรื่อง เครื่องมือและอุปกรณ์ในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
+            <p>เพื่อให้ผู้เรียนสามารถรู้จัก เลือกใช้ และใช้งานเครื่องมือรวมถึงอุปกรณ์ต่าง ๆ ได้อย่างถูกต้องและปลอดภัย ในกระบวนการติดตั้งเครื่องปรับอากาศแบบโซลาร์ไฮบริด</p>
+            <a href="courses2.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUM09ERTA1TEtFRUJLQzNZMU5ESEFXT1lPSC4u" class="btn" target="_blank">เริ่มทดสอบ</a>
           </div>
         </div>
       </div>
+
+      <!-- Electricity Training -->
+      <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('electricity-training')">
+          <i class="fas fa-bolt"></i> หมวดหมู่: อบรมเกี่ยวกับไฟฟ้า ▼
+        </button>
+        <div class="dropdown-content" id="electricity-training">
+          <div class="course-item">
+            <h3>หลักสูตร 1: พื้นฐานระบบไฟฟ้า</h3>
+            <p>เรียนรู้พื้นฐานการติดตั้งและบำรุงรักษาระบบไฟฟ้า</p>
+            <a href="courses-electricity1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+            <a href="#" class="btn" target="_blank">เริ่มทดสอบ</a> 
+          </div>
+        </div>
+      </div>
+
+      <!-- Kaizen Training -->
+      <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('kaizen-training')">
+          <i class="fas fa-bullseye"></i> หมวดหมู่: การปรับปรุงงานแบบ Kaizen ▼
+        </button>
+        <div class="dropdown-content" id="kaizen-training">
+          <div class="course-item">
+            <h3>หลักสูตร 1: การปรับปรุงงานแบบ Kaizen</h3>
+            <p>เรียนรู้แนวคิดและวิธีการปรับปรุงงานอย่างต่อเนื่อง</p>
+            <a href="courses-keizen1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNklRVFY3N1MwQVNVOVhMWVJOQkZVUU9HWi4u" class="btn" target="_blank">เริ่มทดสอบ</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Safety Training -->
+      <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('safety-training')">
+          <i class="fas fa-shield-alt"></i> หมวดหมู่: การฝึกอบรมด้านความปลอดภัย ▼
+        </button>
+        <div class="dropdown-content" id="safety-training">
+          <div class="course-item">
+            <h3>หลักสูตร 1: หลักสูตรอุปกรณ์คุ้มครองความปลอดภัยส่วนบุคคล</h3>
+            <p>เรียนรู้เนื้อหาหลักสูตรอุปกรณ์คุ้มครองความปลอดภัยส่วนบุคคล</p>
+            <a href="safe.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+            <a href="#" class="btn" target="_blank">เริ่มทดสอบ</a> 
+          </div>
+        </div>
+      </div>
+
+      <!-- Small AC Training -->
+      <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('small-air-conditioner-training')">
+          <i class="fas fa-tools"></i> หมวดหมู่: การสอนติดตั้งเครื่องปรับอากาศขนาดเล็ก ▼
+        </button>
+        <div class="dropdown-content" id="small-air-conditioner-training">
+          <div class="course-item">
+            <h3>หลักสูตรการสอนงานติดตั้งเครื่องปรับอากาศขนาดเล็ก</h3>
+            <p>เรียนรู้เนื้อหาหลักสูตรติดตั้งเครื่องปรับอากาศขนาดเล็ก</p>
+            <a href="small-air.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+            <a href="#" class="btn" target="_blank">เริ่มทดสอบ</a>
+          </div>
+        </div>
+      </div>
+
     </section>
   </main>
   <footer>
@@ -355,22 +326,12 @@
   <script>
     function toggleDropdown(id) {
       const content = document.getElementById(id);
-      const button = document.querySelector(`[onclick="toggleDropdown('${id}')"]`);
       if (content.style.display === "block") {
         content.style.display = "none";
-        button.innerHTML = button.innerHTML.replace("▼", "▲").replace(/<\/?span[^>]*>/g, "");
-        button.innerHTML = `<span class="icon">${button.dataset.icon}</span>` + button.textContent.trim() + ` ▼`;
       } else {
         content.style.display = "block";
-        button.innerHTML = button.innerHTML.replace("▼", "▲");
       }
     }
-
-    // Update dropdown buttons with icon and arrow
-    document.querySelectorAll('.dropdown-button').forEach(button => {
-      const icon = button.querySelector('.icon');
-      button.dataset.icon = icon.textContent;
-    });
   </script>
 </body>
 </html>
