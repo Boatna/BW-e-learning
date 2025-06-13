@@ -1,397 +1,387 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ระบบ e-Learning สำหรับอบรมพนักงานในด้านเทคนิค ความปลอดภัย และการพัฒนาทักษะในองค์กร">
-    <title>E-Learning สำหรับอบรมพนักงาน</title>
-    <!-- Favicon สำหรับเบราว์เซอร์ -->
-    <link rel="icon" href="favicon.png" type="image/png">
-    <!-- สำหรับ iOS (Apple Devices) -->
-    <link rel="apple-touch-icon" href="Favicon (2).png">
-    <!-- สำหรับ Android (ใช้กับ Add to Home Screen) -->
-    <link rel="manifest" href="manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Kanit', sans-serif;
-            line-height: 1.6;
-            background-color: #f9f9f9;  
-            color: #216fc7;
-        }
-        header {
-            background: linear-gradient(135deg, #216fc7, #216fc7);
-            color: white;
-            padding: 20px 0;
-        }
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .logo {
-            height: 80px;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 10px 15px;
-            border-radius: 20px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-        .hero {
-            background: linear-gradient(rgba(204, 203, 203, 0.5), rgba(204, 203, 203, 0.5)), url('assets/hero-bg.jpg') no-repeat center center/cover;
-            color: rgb(52, 75, 167);
-            text-align: center;
-            padding: 100px 20px;
-        }
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #000;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: bold;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.4s ease-in-out;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #0077ff, #0056b3);
-            color: white;
-        }
-        .btn-primary::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 0;
-            transition: transform 0.6s ease, opacity 0.6s ease;
-            border-radius: 50%;
-            z-index: 0;
-        }
-        .btn-primary:hover::before {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-        }
-        .btn-primary span {
-            position: relative;
-            z-index: 1;
-        }
-        .btn-secondary {
-            background: transparent;
-            color: #216fc7;
-            border: 2px solid #216fc7;
-        }
-        .btn-secondary:hover {
-            background-color: #216fc7;
-            color: white;
-        }
-        .courses {
-            padding: 40px 20px;
-            text-align: center;
-        }
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .course {
-            background-color: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        .course:hover {
-            transform: translateY(-5px);
-        }
-        .course h3 {
-            margin-bottom: 10px;
-            color: #216fc7;
-            font-size: 1.2rem;
-        }
-        .course p {
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            color: #000;
-        }
-        .course-info {
-            margin-bottom: 8px;
-        }
-        .course-info span {
-            font-size: 0.8rem;
-            color: #666;
-        }
-        .course-price {
-            margin-bottom: 8px;
-        }
-        .course-price span {
-            font-size: 0.8rem;
-            color: #e74c3c;
-        }
-        .course-participants {
-            margin-bottom: 8px;
-        }
-        .course-participants span {
-            font-size: 0.8rem;
-            color: #666;
-        }
-        .course-image {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-        .btn-action {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-        .btn-action a {
-            flex: 1;
-            text-align: center;
-            font-size: 0.85rem;
-            padding: 8px;
-        }
-        footer {
-            background-color: #ffffff;
-            color: #212529;
-            padding: 15px 0;
-            text-align: center;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        }
-        footer a {
-            color: #0077ff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        footer a:hover {
-            color: #0056b3;
-        }
-        /* Responsive Design for Mobile */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            .header-container h1 {
-                font-size: 1rem;
-            }
-            .hero h2 {
-                font-size: 2rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            nav ul {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-            }
-            nav ul li a {
-                width: auto;
-                text-align: center;
-                padding: 8px 12px;
-                font-size: 0.85rem;
-            }
-            .course-grid {
-                grid-template-columns: 1fr;
-            }
-            .course h3 {
-                font-size: 1.2rem;
-            }
-            .course p {
-                font-size: 0.9rem;
-            }
-            .course-info span,
-            .course-price span,
-            .course-participants span {
-                font-size: 0.75rem;
-            }
-        }
-        .video-section {
-  padding: 40px 20px;
-  text-align: center;
-}
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-.video-card {
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-.video-card iframe {
-  border: none;
-  display: block;
-  width: 100%;
-  height: 200px;
-}
-@media (max-width: 768px) {
-  .video-card iframe {
-    height: 180px;
-  }
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ระบบ e-Learning สำหรับอบรมพนักงานในด้านเทคนิค ความปลอดภัย และการพัฒนาทักษะในองค์กร" />
+  <title>E-Learning สำหรับอบรมพนักงาน</title>
 
-    </style>
+  <!-- Favicon และ Manifest -->
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="Favicon (2).png" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Style -->
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Kanit', sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #216fc7;
+    }
+    header {
+      background: linear-gradient(135deg, #216fc7, #216fc7);
+      color: white;
+      padding: 20px 0;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .logo {
+      height: 80px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 10px 15px;
+      border-radius: 20px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(204, 203, 203, 0.5), rgba(204, 203, 203, 0.5)), 
+        url('assets/hero-bg.jpg') no-repeat center center/cover;
+      text-align: center;
+      padding: 100px 20px;
+      color: rgb(52, 75, 167);
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #0077ff, #0056b3);
+      color: white;
+    }
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 300%; height: 300%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .btn-primary:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #216fc7;
+      border: 2px solid #216fc7;
+    }
+    .btn-secondary:hover {
+      background-color: #216fc7;
+      color: white;
+    }
+
+    /* Courses Section */
+    .courses {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .course {
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .course:hover {
+      transform: translateY(-5px);
+    }
+    .course h3 {
+      margin-bottom: 10px;
+      color: #216fc7;
+      font-size: 1.2rem;
+    }
+    .course p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      color: #000;
+    }
+    .course-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .course-info span,
+    .course-price span,
+    .course-participants span {
+      display: block;
+      font-size: 0.8rem;
+      color: #666;
+    }
+    .btn-action {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .btn-action a {
+      flex: 1;
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 8px;
+    }
+
+    /* Image Section */
+    .image-section {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .image-section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+    .image-section img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Video Section */
+    .video-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .video-card {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    .video-card iframe {
+      border: none;
+      display: block;
+      width: 100%;
+      height: 200px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #ffffff;
+      color: #212529;
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+    footer a {
+      color: #0077ff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: #0056b3;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      nav ul li a {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+      }
+      .course-grid {
+        grid-template-columns: 1fr;
+      }
+      .video-card iframe {
+        height: 180px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div class="header-container">
-            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" loading="lazy">
-            <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">หน้าแรก</a></li>
-                    <li><a href="course.html">หลักสูตร</a></li>
-                    <li><a href="news.html">ข่าวสาร</a></li>
-                    <li><a href="contact.html">ติดต่อเรา</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <section class="hero">
-            <div class="container hero-container">
-                <h2>ยินดีต้อนรับสู่ระบบอบรมออนไลน์</h2>
-                <p>พัฒนาความรู้และทักษะกับหลักสูตรคุณภาพที่คุณสามารถเลือกเรียนได้ทุกที่ทุกเวลา</p>
-                <a href="course.html" class="btn btn-primary"><span>ดูหลักสูตร</span></a>
-            </div>
-        </section>
-        <section class="courses">
-            <div class="container">
-                <h2>หลักสูตรแนะนำ</h2>
-                <div class="course-grid">
-                    <div class="course">
-                        <img src="assets/Kaizen-img.png" alt="หลักสูตร 1" class="course-image">
-                        <h3>หลักสูตร : ความปลอดภัยในการติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-                        <p>เพื่อความปลอดภัยของผู้ติดตั้งและอุปกรณ์ การปฏิบัติตามแนวทางด้านความปลอดภัยเป็นสิ่งจำเป็นอย่างยิ่ง</p>
-                        <div class="course-info">
-                            <span>วันที่ : 28 ตุลาคม 2568</span>
-                            <span>สถานที่ : ห้องทดสอบ bitwise thailand ชั้น 4</span>
-                        </div>
-                        <div class="course-participants">
-                            <span>ผู้เข้าร่วมไม่เกิน : 3,900 คน</span>
-                        </div>
-                        <div class="btn-action">
-                            <a href="courses1.html" class="btn btn-secondary">ดูรายละเอียดหลักสูตร</a>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <img src="assets/5s-img.png" alt="หลักสูตร 2" class="course-image">
-                        <h3>หลักสูตร : แนวคิดและวิธีการปฏิบัติตาม 5ส.</h3>
-                        <p>5ส (5S) คือ เครื่องมือพื้นฐานในการจัดระเบียบสถานที่ทำงานอย่างมีประสิทธิภาพและปลอดภัย ซึ่งประกอบด้วย 5 ขั้นตอนจากภาษาญี่ปุ่น</p>
-                        <div class="course-info">
-                            <span>วันที่ : 14 กุมภาพันธ์ 2568</span>
-                            <span>สถานที่ : โรงหนังตึก HQ</span>
-                        </div>
-                        <div class="course-participants">
-                            <span>จำนวนผู้เข้าร่วมไม่เกิน : 39 คน</span>
-                        </div>
-                        <div class="btn-action">
-                            <a href="courses-5S.html" class="btn btn-secondary">ดูรายละเอียดหลักสูตร</a>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <img src="assets/safety-img.png" alt="หลักสูตร 3" class="course-image">
-                        <h3>หลักสูตร : เครื่องมือและอุปกรณ์ในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
-                        <p>หลักสูตรนี้มุ่งเน้นให้ผู้เรียนรู้จักเครื่องมือและอุปกรณ์ที่ใช้ในงานติดตั้ง พร้อมทั้งสามารถใช้งานได้อย่างถูกต้องและปลอดภัย</p>
-                        <div class="course-info">
-                            <span>วันที่ : 27 พฤศจิกายน 2568</span>
-                            <span>สถานที่ : ห้องประชุมตึก bitwise thailand ชั้น 2</span>
-                        </div>
-                        <div class="course-participants">
-                            <span>จำนวนผู้เข้าร่วมไม่เกิน : 35 คน</span>
-                        </div>
-                        <div class="btn-action">
-                            <a href="courses2.html" class="btn btn-secondary">ดูรายละเอียดหลักสูตร</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- แก้ไขและตกแต่งในส่วนของรูปภาพประกอบเว็บไซต์ -->
-        <div class="image-section" style="text-align: center; padding: 40px 20px;">
-            <img src="assets/ChatGPT Image Jun 13, 2025, 10_37_30 AM (1).png" 
-         alt="รูปภาพประกอบเว็บไซต์" 
-         style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease-in-out;"
-         onmouseover="this.style.transform='scale(1.02)'" 
-         onmouseout="this.style.transform='scale(1)'">
-        </div>
-        <section class="video-section">
-  <div class="container">
-    <h2>วิดีโอแนะนำจาก HR Bitwise Grup</h2>
-    <div class="video-grid">
-      <!-- วิดีโอที่ 1 -->
-      <div class="video-card">
-  <iframe width="100%" height="200" src="https://www.youtube.com/embed/T1CSETUYaEo" 
-    title="5 ทักษะ ที่ HR ควรรู้ | HRODTHAI" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- วิดีโอที่ 2 -->
-<div class="video-card">
-  <iframe width="100%" height="200" src="https://www.youtube.com/embed/3u_ybJdNzOU" 
-    title="ศิลปะการสั่งงานและมอบหมายงานอย่างมีประสิทธิภาพ | HRODTHAI" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- วิดีโอที่ 3 -->
-<div class="video-card">
-  <iframe width="100%" height="200" src="https://www.youtube.com/embed/TMy6mko6zHU" 
-    title="การสอนงาน JOB INSTRUCTION | HRODTHAI" frameborder="0" allowfullscreen></iframe>
-</div>
-
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" loading="lazy" />
+      <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">หน้าแรก</a></li>
+          <li><a href="course.html">หลักสูตร</a></li>
+          <li><a href="news.html">ข่าวสาร</a></li>
+          <li><a href="contact.html">ติดต่อเรา</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-        </section>
-    </main>
-    <footer>
-        <div class="container footer-container">
-            <p>© 2024 e-Learning สำหรับอบรมพนักงาน | 
-                <a href="privacy-policy.html" aria-label="นโยบายความเป็นส่วนตัว">นโยบายความเป็นส่วนตัว</a>
-            </p>
+  <!-- Main -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h2>ยินดีต้อนรับสู่ระบบอบรมออนไลน์</h2>
+      <p>พัฒนาความรู้และทักษะกับหลักสูตรคุณภาพที่คุณสามารถเลือกเรียนได้ทุกที่ทุกเวลา</p>
+      <a href="course.html" class="btn btn-primary"><span>ดูหลักสูตร</span></a>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses">
+      <h2>หลักสูตรแนะนำ</h2>
+      <div class="course-grid">
+        <!-- Course 1 -->
+        <div class="course">
+          <img src="assets/Kaizen-img.png" alt="หลักสูตร 1" class="course-image" loading="lazy" />
+          <h3>ความปลอดภัยในการติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
+          <p>เพื่อความปลอดภัยของผู้ติดตั้งและอุปกรณ์ การปฏิบัติตามแนวทางด้านความปลอดภัยเป็นสิ่งจำเป็นอย่างยิ่ง</p>
+          <div class="course-info">
+            <span>วันที่ : 28 ตุลาคม 2568</span>
+            <span>สถานที่ : ห้องทดสอบ bitwise thailand ชั้น 4</span>
+          </div>
+          <div class="course-participants">
+            <span>ผู้เข้าร่วมไม่เกิน : 3,900 คน</span>
+          </div>
+          <div class="btn-action">
+            <a href="courses1.html" class="btn btn-secondary">ดูรายละเอียดหลักสูตร</a>
+          </div>
         </div>
-    </footer>
-    <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+        <!-- Course 2 -->
+        <div class="course">
+          <img src="assets/5s-img.png" alt="หลักสูตร 2" class="course-image" loading="lazy" />
+          <h3>แนวคิดและวิธีการปฏิบัติตาม 5ส.</h3>
+          <p>5ส (5S) คือ เครื่องมือพื้นฐานในการจัดระเบียบสถานที่ทำงานอย่างมีประสิทธิภาพและปลอดภัย</p>
+          <div class="course-info">
+            <span>วันที่ : 14 กุมภาพันธ์ 2568</span>
+            <span>สถานที่ : โรงหนังตึก HQ</span>
+          </div>
+          <div class="course-participants">
+            <span>จำนวนผู้เข้าร่วมไม่เกิน : 39 คน</span>
+          </div>
+          <div class="btn-action">
+            <a href="courses-5S.html" class="btn btn-secondary">ดูรายละเอียดหลักสูตร</a>
+          </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="course">
+          <img src="assets/safety-img.png" alt="หลักสูตร 3" class="course-image" loading="lazy" />
+          <h3>เครื่องมือและอุปกรณ์ในงานติดตั้งเครื่องปรับอากาศโซลาร์ไฮบริด</h3>
+          <p>หลักสูตรนี้มุ่งเน้นให้ผู้เรียนรู้จักเครื่องมือและอุปกรณ์ที่ใช้ในงานติดตั้งอย่างปลอดภัย</p>
+          <div class="course-info">
+            <span>วันที่ : 27 พฤศจิกายน 2568</span>
+            <span>สถานที่ : ห้องประชุม bitwise thailand ชั้น 2</span>
+          </div>
+          <div class="course-participants">
+            <span>จำนวนผู้เข้าร่วมไม่เกิน : 35 คน</span>
+          </div>
+          <div class="btn-action">
+            <a href="courses2.html" class="btn btn-secondary">ดูรายละเอียดหลักสูตร</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Section -->
+    <section class="image-section">
+      <img src="assets/ChatGPT Image Jun 13, 2025, 10_37_30 AM (1).png" alt="รูปภาพประกอบเว็บไซต์" />
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+      <h2>วิดีโอแนะนำจาก HR Bitwise Grup</h2>
+      <div class="video-grid">
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/T1CSETUYaEo" title="5 ทักษะ ที่ HR ควรรู้ | HRODTHAI" allowfullscreen></iframe>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/3u_ybJdNzOU" title="ศิลปะการสั่งงานและมอบหมายงานอย่างมีประสิทธิภาพ | HRODTHAI" allowfullscreen></iframe>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/TMy6mko6zHU" title="การสอนงาน JOB INSTRUCTION | HRODTHAI" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 e-Learning สำหรับอบรมพนักงาน | 
+      <a href="privacy-policy.html">นโยบายความเป็นส่วนตัว</a>
+    </p>
+  </footer>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
