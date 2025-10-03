@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>e-Learning สำหรับอบรมพนักงาน</title>
+  <title>หลักสูตร - e-Learning สำหรับอบรมพนักงาน</title>
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="Favicon (2).png" />
@@ -11,7 +11,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
       margin: 0;
@@ -54,7 +54,6 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
-      font-size: 12px;
     }
     .logo {
       height: 80px;
@@ -96,32 +95,39 @@
     .dropdown-button {
       background: linear-gradient(135deg, #216fc7, #216fc7);
       color: white;
-      padding: 12px;
+      padding: 15px;
       border: none;
       cursor: pointer;
       width: 100%;
       text-align: left;
       font-size: 1rem;
-      border-radius: 15px;
-      transition: background-color 0.3s;
+      border-radius: 10px;
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     .dropdown-button:hover {
       background: linear-gradient(135deg, #1a5fae, #1a5fae);
     }
+    .dropdown-button.active {
+      border-radius: 10px 10px 0 0;
+    }
     .dropdown-content {
-      display: none;
+      max-height: 0;
+      overflow: hidden;
       background-color: white;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 15px;
-      margin-top: 10px;
-      overflow: hidden;
+      border-radius: 0 0 10px 10px;
+      transition: max-height 0.3s ease;
+    }
+    .dropdown-content.open {
+      max-height: 1000px;
     }
     .course-item {
       padding: 15px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #eee;
       transition: background-color 0.3s;
     }
     .course-item:last-child {
@@ -137,6 +143,7 @@
     .course-item p {
       font-size: 0.95rem;
       margin-bottom: 10px;
+      line-height: 1.5;
     }
     .btn {
       display: inline-block;
@@ -146,10 +153,21 @@
       padding: 8px 15px;
       border-radius: 25px;
       transition: background-color 0.3s, transform 0.3s;
+      font-size: 0.9rem;
     }
     .btn:hover {
       background: linear-gradient(135deg, #0056b3, #003d80);
       transform: scale(1.05);
+    }
+    .status-badge {
+      display: inline-block;
+      background: #ff9800;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      margin-left: 10px;
+      vertical-align: middle;
     }
     /* Footer */
     footer {
@@ -171,16 +189,17 @@
       .header-container {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
       }
       nav ul {
         flex-direction: row;
         gap: 10px;
         flex-wrap: wrap;
+        justify-content: center;
       }
       .dropdown-button {
         font-size: 0.9rem;
         padding: 12px;
-        width: 100%;
       }
       .course-item h3 {
         font-size: 1rem;
@@ -197,10 +216,10 @@
     }
     @media (max-width: 480px) {
       .logo {
-        height: 40px;
+        height: 60px;
       }
       .header-container h1 {
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
       .dropdown-button {
         font-size: 0.85rem;
@@ -220,28 +239,35 @@
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
+  
   <header>
     <div class="header-container">
-      <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" aria-hidden="true" />
+      <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท Bitwise" class="logo" />
       <h1>E-Learning สำหรับอบรมพนักงาน</h1>
       <nav>
         <ul>
           <li><a href="index.html">หน้าแรก</a></li>
-          <li><a href="course.html">หลักสูตร</a></li>
+          <li><a href="course.html" aria-current="page">หลักสูตร</a></li>
           <li><a href="news.html">ข่าวสาร</a></li>
           <li><a href="contact.html">ติดต่อเรา</a></li>
         </ul>
       </nav>
     </div>
   </header>
+  
   <main id="main-content">
     <section id="courses">
-      <h2>หลักสูตรที่เรามี</h2>
+      <h2>หลักสูตรการฝึกอบรมทั้งหมด</h2>
 
       <!-- Aircon Training -->
       <div class="dropdown">
-        <button class="dropdown-button" onclick="toggleDropdown('aircon-training')">
-          <i class="fas fa-snowflake"></i> หมวดหมู่: เครื่องปรับอากาศโซลาร์ไฮบริด (กำลังทดสอบ) ▼
+        <button class="dropdown-button" aria-expanded="false" onclick="toggleDropdown(this, 'aircon-training')">
+          <span>
+            <i class="fas fa-snowflake"></i> หมวดหมู่: เครื่องปรับอากาศโซลาร์ไฮบริด 
+            <span class="status-badge">กำลังทดสอบ</span>
+          </span>
+          <i class="fas fa-chevron-down"></i>
         </button>
         <div class="dropdown-content" id="aircon-training">
           <div class="course-item">
@@ -259,13 +285,17 @@
 
       <!-- Electricity Training -->
       <div class="dropdown">
-        <button class="dropdown-button" onclick="toggleDropdown('electricity-training')">
-          <i class="fas fa-bolt"></i> หมวดหมู่: อบรมเกี่ยวกับไฟฟ้า (กำลังทดสอบ) ▼
+        <button class="dropdown-button" aria-expanded="false" onclick="toggleDropdown(this, 'electricity-training')">
+          <span>
+            <i class="fas fa-bolt"></i> หมวดหมู่: อบรมเกี่ยวกับไฟฟ้า 
+            <span class="status-badge">กำลังทดสอบ</span>
+          </span>
+          <i class="fas fa-chevron-down"></i>
         </button>
         <div class="dropdown-content" id="electricity-training">
           <div class="course-item">
             <h3>หลักสูตร 1: พื้นฐานระบบไฟฟ้า</h3>
-            <p>เรียนรู้พื้นฐานการติดตั้งและบำรุงรักษาระบบไฟฟ้า</p>
+            <p>เรียนรู้พื้นฐานการติดตั้งและบำรุงรักษาระบบไฟฟ้า หลักการทำงานของวงจรไฟฟ้าเบื้องต้น และเทคนิคการแก้ไขปัญหาทางไฟฟ้าอย่างปลอดภัย</p>
             <a href="courses-electricity1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
           </div>
         </div>
@@ -273,42 +303,50 @@
 
       <!-- Kaizen Training -->
       <div class="dropdown">
-        <button class="dropdown-button" onclick="toggleDropdown('kaizen-training')">
-          <i class="fas fa-bullseye"></i> หมวดหมู่: การปรับปรุงงานแบบ Kaizen ▼
+        <button class="dropdown-button" aria-expanded="false" onclick="toggleDropdown(this, 'kaizen-training')">
+          <span>
+            <i class="fas fa-bullseye"></i> หมวดหมู่: การปรับปรุงงานแบบ Kaizen
+          </span>
+          <i class="fas fa-chevron-down"></i>
         </button>
         <div class="dropdown-content" id="kaizen-training">
           <div class="course-item">
             <h3>หลักสูตร 1: การปรับปรุงงานแบบ Kaizen</h3>
-            <p>เรียนรู้แนวคิดและวิธีการปรับปรุงงานอย่างต่อเนื่อง</p>
+            <p>เรียนรู้แนวคิดและวิธีการปรับปรุงงานอย่างต่อเนื่องด้วยหลักการ Kaizen เพื่อเพิ่มประสิทธิภาพการทำงานและลดความสูญเสียในกระบวนการต่าง ๆ</p>
             <a href="courses-keizen1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
           </div>
         </div>
       </div>
 
-<!-- 5s. Training -->
+      <!-- 5S Training -->
       <div class="dropdown">
-        <button class="dropdown-button" onclick="toggleDropdown('5s-training')">
-          <i class="fas fa-hands-wash"></i> หมวดหมู่: หลักสูตรการอบบรมเกี่ยวกับ 5 ส. ▼
+        <button class="dropdown-button" aria-expanded="false" onclick="toggleDropdown(this, '5s-training')">
+          <span>
+            <i class="fas fa-hands-wash"></i> หมวดหมู่: หลักสูตรการอบรมเกี่ยวกับ 5 ส.
+          </span>
+          <i class="fas fa-chevron-down"></i>
         </button>
         <div class="dropdown-content" id="5s-training">
           <div class="course-item">
-            <h3>หลักสูตร 1: หลักสูตรการอบบรมเกี่ยวกับ 5 ส.</h3>
-            <p>เรียนรู้แนวคิดและวิธีการปรับปรุงงานอย่างต่อเนื่อง</p>
+            <h3>หลักสูตร 1: หลักสูตรการอบรมเกี่ยวกับ 5 ส.</h3>
+            <p>เรียนรู้แนวคิดและวิธีการปฏิบัติตามหลักการ 5 ส. (สะสาง สะดวก สะอาด สุขลักษณะ และสร้างนิสัย) เพื่อจัดระเบียบสถานที่ทำงานให้มีประสิทธิภาพและปลอดภัย</p>
             <a href="courses-5S.html" class="btn">ดูรายละเอียดหลักสูตร</a>
           </div>
         </div>
       </div>
 
-
       <!-- Safety Training -->
       <div class="dropdown">
-        <button class="dropdown-button" onclick="toggleDropdown('safety-training')">
-          <i class="fas fa-shield-alt"></i> หมวดหมู่: การฝึกอบรมด้านความปลอดภัย ▼
+        <button class="dropdown-button" aria-expanded="false" onclick="toggleDropdown(this, 'safety-training')">
+          <span>
+            <i class="fas fa-shield-alt"></i> หมวดหมู่: การฝึกอบรมด้านความปลอดภัย
+          </span>
+          <i class="fas fa-chevron-down"></i>
         </button>
         <div class="dropdown-content" id="safety-training">
           <div class="course-item">
             <h3>หลักสูตร 1: หลักสูตรอุปกรณ์คุ้มครองความปลอดภัยส่วนบุคคล</h3>
-            <p>เรียนรู้เนื้อหาหลักสูตรอุปกรณ์คุ้มครองความปลอดภัยส่วนบุคคล</p>
+            <p>เรียนรู้เกี่ยวกับประเภทและการใช้อุปกรณ์คุ้มครองความปลอดภัยส่วนบุคคล (PPE) อย่างถูกต้อง เพื่อป้องกันอันตรายในการทำงาน</p>
             <a href="safe.html" class="btn">ดูรายละเอียดหลักสูตร</a> 
           </div>
         </div>
@@ -316,13 +354,16 @@
 
       <!-- Small AC Training -->
       <div class="dropdown">
-        <button class="dropdown-button" onclick="toggleDropdown('small-air-conditioner-training')">
-          <i class="fas fa-tools"></i> หมวดหมู่: การสอนติดตั้งเครื่องปรับอากาศขนาดเล็ก ▼
+        <button class="dropdown-button" aria-expanded="false" onclick="toggleDropdown(this, 'small-air-conditioner-training')">
+          <span>
+            <i class="fas fa-tools"></i> หมวดหมู่: การสอนติดตั้งเครื่องปรับอากาศขนาดเล็ก
+          </span>
+          <i class="fas fa-chevron-down"></i>
         </button>
         <div class="dropdown-content" id="small-air-conditioner-training">
           <div class="course-item">
             <h3>หลักสูตรการสอนงานติดตั้งเครื่องปรับอากาศขนาดเล็ก</h3>
-            <p>เรียนรู้เนื้อหาหลักสูตรติดตั้งเครื่องปรับอากาศขนาดเล็ก</p>
+            <p>เรียนรู้เทคนิคและขั้นตอนการติดตั้งเครื่องปรับอากาศขนาดเล็กอย่างถูกต้องและปลอดภัย รวมถึงการบำรุงรักษาเบื้องต้น</p>
             <a href="small-air.html" class="btn">ดูรายละเอียดหลักสูตร</a>
           </div>
         </div>
@@ -330,18 +371,48 @@
 
     </section>
   </main>
+  
   <footer>
-    <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
+    <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="privacy-policy.html">นโยบายความเป็นส่วนตัว</a></p>
   </footer>
+  
   <script>
-    function toggleDropdown(id) {
+    function toggleDropdown(button, id) {
       const content = document.getElementById(id);
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
+      const isOpen = content.classList.contains('open');
+      
+      // ปิด dropdown ทั้งหมดก่อน
+      document.querySelectorAll('.dropdown-content').forEach(item => {
+        item.classList.remove('open');
+      });
+      document.querySelectorAll('.dropdown-button').forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
+      });
+      
+      // เปิด dropdown ที่เลือก (ถ้ายังไม่เปิดอยู่)
+      if (!isOpen) {
+        content.classList.add('open');
+        button.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+        button.querySelector('.fa-chevron-down').style.transform = 'rotate(180deg)';
       }
     }
+    
+    // ปิด dropdown เมื่อคลิกนอกพื้นที่
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-content').forEach(item => {
+          item.classList.remove('open');
+        });
+        document.querySelectorAll('.dropdown-button').forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
+        });
+      }
+    });
   </script>
 </body>
 </html>

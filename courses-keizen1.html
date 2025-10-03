@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>e-Learning สำหรับอบรมพนักงาน</title>
+  <meta name="description" content="หลักสูตร Kaizen - การปรับปรุงงานอย่างต่อเนื่อง สำหรับอบรมพนักงาน">
+  <title>หลักสูตร Kaizen - e-Learning สำหรับอบรมพนักงาน</title>
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png" />
@@ -12,6 +13,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
     * {
@@ -48,6 +52,7 @@
       background: linear-gradient(135deg, #216fc7, #216fc7);
       color: white;
       padding: 20px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
     .header-container {
@@ -61,6 +66,11 @@
 
     .logo {
       height: 80px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
     }
 
     nav ul {
@@ -83,9 +93,27 @@
       transform: scale(1.05);
     }
 
+    /* Breadcrumb */
+    .breadcrumb {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .breadcrumb a {
+      color: #216fc7;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
     /* Main Section */
     main {
       padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     h2 {
@@ -125,9 +153,27 @@
     }
 
     .section ul {
-      list-style-type: disc;
-      margin-left: 20px;
+      list-style-type: none;
+      margin-left: 0;
       margin-bottom: 15px;
+    }
+
+    .section ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .section ul li:last-child {
+      border-bottom: none;
+    }
+
+    .section ul li i {
+      color: #28a745;
+      margin-top: 3px;
+      flex-shrink: 0;
     }
 
     .section table {
@@ -157,7 +203,9 @@
     /* Buttons */
     .btn,
     .download-button {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       margin-top: 15px;
       padding: 12px 20px;
       background: linear-gradient(135deg, #007bff, #0056b3);
@@ -175,6 +223,14 @@
       box-shadow: 0 4px 10px rgba(0, 86, 179, 0.3);
     }
 
+    .game-btn {
+      background: linear-gradient(135deg, #28a745, #1e7e34);
+    }
+
+    .game-btn:hover {
+      background: linear-gradient(135deg, #1e7e34, #145523);
+    }
+
     /* Action Buttons */
     .action-buttons {
       display: flex;
@@ -188,6 +244,35 @@
       white-space: nowrap;
     }
 
+    /* Kaizen Principles */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .principle-card {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #216fc7;
+      transition: all 0.3s ease;
+    }
+
+    .principle-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .principle-card h3 {
+      color: #216fc7;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     /* Footer */
     footer {
       background-color: #ffffff;
@@ -195,6 +280,7 @@
       padding: 20px 0;
       text-align: center;
       box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
     }
 
     footer a {
@@ -212,12 +298,14 @@
       .header-container {
         flex-direction: column;
         text-align: center;
+        gap: 15px;
       }
 
       nav ul {
         flex-direction: row;
         gap: 10px;
         flex-wrap: wrap;
+        justify-content: center;
       }
 
       .section h2 {
@@ -239,15 +327,19 @@
         gap: 10px;
         flex-wrap: wrap;
       }
+
+      .principles-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
       .logo {
-        height: 40px;
+        height: 60px;
       }
 
       .header-container h1 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
 
       .section h2 {
@@ -278,11 +370,11 @@
 <body>
   <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
 
-  <header>
+  <header role="banner">
     <div class="header-container">
-      <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" aria-hidden="true" />
-      <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
-      <nav>
+      <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท Bitwise" class="logo" />
+      <h1>E-Learning สำหรับอบรมพนักงาน</h1>
+      <nav role="navigation" aria-label="เมนูหลัก">
         <ul>
           <li><a href="index.html">หน้าแรก</a></li>
           <li><a href="course.html">หลักสูตร</a></li>
@@ -293,48 +385,135 @@
     </div>
   </header>
 
+  <div class="breadcrumb">
+    <a href="index.html">หน้าแรก</a> &gt; <a href="course.html">หลักสูตร</a> &gt; <span>หลักสูตร Kaizen</span>
+  </div>
+
   <main id="main-content">
-    <section class="section">
-      <h2>หลักสูตร Kaizen</h2>
-      <p><strong>Kaizen</strong> คือแนวคิดการปรับปรุงงานอย่างต่อเนื่อง โดยมุ่งเน้นให้เกิดการเปลี่ยนแปลงไปในทางที่ดี เพิ่มประสิทธิภาพ ลดความสูญเปล่า และพัฒนาทั้งคนและกระบวนการทำงาน โดยคำว่า “Kai” แปลว่า “การเปลี่ยนแปลง” และ “Zen” แปลว่า “สิ่งที่ดี”</p>
+    <section class="section" aria-labelledby="kaizen-intro">
+      <h2 id="kaizen-intro">หลักสูตร Kaizen</h2>
+      <p><strong>Kaizen</strong> คือแนวคิดการปรับปรุงงานอย่างต่อเนื่อง โดยมุ่งเน้นให้เกิดการเปลี่ยนแปลงไปในทางที่ดี เพิ่มประสิทธิภาพ ลดความสูญเปล่า และพัฒนาทั้งคนและกระบวนการทำงาน โดยคำว่า "Kai" แปลว่า "การเปลี่ยนแปลง" และ "Zen" แปลว่า "สิ่งที่ดี"</p>
 
-      <p>ในการทำงานแบบ Kaizen จะเน้นการปรับปรุงเล็กๆ น้อยๆ แต่ต่อเนื่อง มีหัวใจสำคัญดังนี้:</p>
-      <ul>
-        <li><strong>ความคิดสร้างสรรค์:</strong> ใช้แนวคิดใหม่ในการแก้ไขปัญหาแทนการใช้วิธีเดิมที่อาจสิ้นเปลือง</li>
-        <li><strong>หลัก “เลิก - ลด - เปลี่ยน”:</strong> ตัดสิ่งที่ไม่จำเป็น ลดขั้นตอนซ้ำซ้อน และเปลี่ยนวิธีการทำงานเมื่อจำเป็น</li>
-        <li><strong>การปรับปรุงอย่างต่อเนื่อง:</strong> ค่อยๆ ปรับปรุงไปทีละขั้น เพื่อให้คุณภาพและประสิทธิภาพดีขึ้น</li>
-      </ul>
+      <div class="principles-grid">
+        <div class="principle-card">
+          <h3><i class="fas fa-lightbulb"></i> ความคิดสร้างสรรค์</h3>
+          <p>ใช้แนวคิดใหม่ในการแก้ไขปัญหาแทนการใช้วิธีเดิมที่อาจสิ้นเปลือง</p>
+        </div>
+        <div class="principle-card">
+          <h3><i class="fas fa-exchange-alt"></i> หลัก "เลิก - ลด - เปลี่ยน"</h3>
+          <p>ตัดสิ่งที่ไม่จำเป็น ลดขั้นตอนซ้ำซ้อน และเปลี่ยนวิธีการทำงานเมื่อจำเป็น</p>
+        </div>
+        <div class="principle-card">
+          <h3><i class="fas fa-chart-line"></i> การปรับปรุงอย่างต่อเนื่อง</h3>
+          <p>ค่อยๆ ปรับปรุงไปทีละขั้น เพื่อให้คุณภาพและประสิทธิภาพดีขึ้น</p>
+        </div>
+      </div>
 
-      <p>การนำ Kaizen ไปใช้ในโรงงานหรือองค์กร จะช่วยให้:</p>
-      <ul>
-        <li>พนักงานมีส่วนร่วมในการปรับปรุงงาน</li>
-        <li>ลดต้นทุนและของเสีย</li>
-        <li>พัฒนาวิธีการทำงานและสิ่งแวดล้อม</li>
-        <li>สร้างวัฒนธรรมการเรียนรู้และพัฒนาอย่างต่อเนื่อง</li>
-      </ul>
-
-      <p>📌 <strong>Kaizen = การเปลี่ยนแปลง + ความคิดสร้างสรรค์ + การมีส่วนร่วมของทุกคน</strong></p>
+      <p style="text-align: center; margin-top: 20px; font-weight: 600; color: #216fc7;">
+        📌 <strong>Kaizen = การเปลี่ยนแปลง + ความคิดสร้างสรรค์ + การมีส่วนร่วมของทุกคน</strong>
+      </p>
     </section>
 
-    <section class="section">
+    <section class="section" aria-labelledby="kaizen-benefits">
+      <h2 id="kaizen-benefits">ประโยชน์ของการนำ Kaizen ไปใช้</h2>
+      <p>การนำ Kaizen ไปใช้ในโรงงานหรือองค์กร จะช่วยให้:</p>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> พนักงานมีส่วนร่วมในการปรับปรุงงาน</li>
+        <li><i class="fas fa-check-circle"></i> ลดต้นทุนและของเสีย</li>
+        <li><i class="fas fa-check-circle"></i> พัฒนาวิธีการทำงานและสิ่งแวดล้อม</li>
+        <li><i class="fas fa-check-circle"></i> สร้างวัฒนธรรมการเรียนรู้และพัฒนาอย่างต่อเนื่อง</li>
+        <li><i class="fas fa-check-circle"></i> เพิ่มประสิทธิภาพการผลิต</li>
+        <li><i class="fas fa-check-circle"></i> ลดเวลาการทำงานที่ไม่จำเป็น</li>
+        <li><i class="fas fa-check-circle"></i> ส่งเสริมการทำงานเป็นทีม</li>
+        <li><i class="fas fa-check-circle"></i> พัฒนาทักษะการแก้ปัญหาของพนักงาน</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="kaizen-steps">
+      <h2 id="kaizen-steps">ขั้นตอนการนำ Kaizen ไปปฏิบัติ</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ขั้นตอน</th>
+            <th>รายละเอียด</th>
+            <th>เครื่องมือที่ใช้</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. ระบุปัญหา</td>
+            <td>ค้นหาจุดที่ต้องการปรับปรุงในกระบวนการทำงาน</td>
+            <td>แผนภูมิพาเรโต, แผนภูมิก้างปลา</td>
+          </tr>
+          <tr>
+            <td>2. วิเคราะห์สาเหตุ</td>
+            <td>ศึกษาสาเหตุรากฐานของปัญหา</td>
+            <td>5 Whys, แผนภูมิก้างปลา</td>
+          </tr>
+          <tr>
+            <td>3. สร้างแนวทางแก้ไข</td>
+            <td>เสนอวิธีการปรับปรุงที่เหมาะสม</td>
+            <td>การระดมสมอง, PDCA</td>
+          </tr>
+          <tr>
+            <td>4. นำไปปฏิบัติ</td>
+            <td>ทดลองใช้วิธีการปรับปรุง</td>
+            <td>แผนปฏิบัติการ, การทดลอง</td>
+          </tr>
+          <tr>
+            <td>5. ประเมินผล</td>
+            <td>ติดตามและวัดผลการปรับปรุง</td>
+            <td>KPI, แผนภูมิควบคุม</td>
+          </tr>
+          <tr>
+            <td>6. ทำให้เป็นมาตรฐาน</td>
+            <td>ทำให้วิธีการใหม่เป็นมาตรฐานขององค์กร</td>
+            <td>เอกสารมาตรฐาน, การฝึกอบรม</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" aria-labelledby="kaizen-actions">
+      <h2 id="kaizen-actions">เริ่มต้นเรียนรู้กับหลักสูตร Kaizen</h2>
       <div class="action-buttons">
-        <a href="หลักสูตร Kaizen.pdf" download class="download-button">เอกสารหลักสูตรการอบรม</a>
-        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNklRVFY3N1MwQVNVOVhMWVJOQkZVUU9HWi4u " class="btn" target="_blank">เริ่มทดสอบ</a>
-        <a href="https://quiz.zep.us/th/play/vJx0a9 " class="btn" target="_blank">ตอบคำถามแบบเกม</a>
+        <a href="หลักสูตร_Kaizen.pdf" download class="download-button" aria-label="ดาวน์โหลดเอกสารหลักสูตรการอบรม Kaizen">
+          <i class="fas fa-download"></i> ดาวน์โหลดเอกสารหลักสูตร
+        </a>
+        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNklRVFY3N1MwQVNVOVhMWVJOQkZVUU9HWi4u" 
+           class="btn" target="_blank" aria-label="เริ่มทำแบบทดสอบหลักสูตร Kaizen">
+          <i class="fas fa-play-circle"></i> เริ่มทำแบบทดสอบ
+        </a>
+        <a href="https://quiz.zep.us/th/play/vJx0a9" 
+           class="btn game-btn" target="_blank" aria-label="ตอบคำถามแบบเกมหลักสูตร Kaizen">
+          <i class="fas fa-gamepad"></i> ตอบคำถามแบบเกม
+        </a>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-container">
-      <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
+  <footer role="contentinfo">
+    <div class="container">
+      <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="privacy-policy.html">นโยบายความเป็นส่วนตัว</a></p>
     </div>
   </footer>
 
-  <!-- JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js "></script>
   <script>
-    // เพิ่มฟังก์ชัน JavaScript หากต้องการใช้งานเพิ่มเติม
+    // เพิ่มฟังก์ชัน JavaScript สำหรับการโต้ตอบเพิ่มเติม
+    document.addEventListener('DOMContentLoaded', function() {
+      // เพิ่มเอฟเฟกต์เมื่อโหลดหน้าเว็บ
+      const sections = document.querySelectorAll('.section');
+      sections.forEach((section, index) => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        setTimeout(() => {
+          section.style.opacity = '1';
+          section.style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+    });
   </script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ข่าวสารและบทความล่าสุด - e-Learning สำหรับอบรมพนักงาน">
     <title>ข่าวสาร - e-Learning สำหรับอบรมพนักงาน</title>
 
     <!-- Favicon -->
@@ -12,6 +13,9 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         * {
@@ -47,6 +51,7 @@
             background: linear-gradient(135deg, #216fc7, #216fc7);
             color: white;
             padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header-container {
@@ -60,6 +65,11 @@
 
         .logo {
             height: 80px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         nav ul {
@@ -80,6 +90,22 @@
         nav ul li a:hover {
             background-color: rgba(255, 255, 255, 0.2);
             transform: scale(1.05);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb a {
+            color: #216fc7;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
         }
 
         /* Container */
@@ -104,16 +130,19 @@
         /* News Section */
         .news-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
 
         .news-item {
             background-color: white;
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .news-item:hover {
@@ -134,20 +163,49 @@
             transform: scale(1.03);
         }
 
-        .news-item h3 {
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .news-category {
+            background: #e3f2fd;
             color: #216fc7;
-            font-size: 1.2rem;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .news-date {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-item h3 {
+            margin-bottom: 12px;
+            color: #216fc7;
+            font-size: 1.3rem;
+            line-height: 1.4;
         }
 
         .news-item p {
             font-size: 0.95rem;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: #555;
+            flex-grow: 1;
+            line-height: 1.6;
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: linear-gradient(135deg, #007bff, #0056b3);
             color: white;
             text-decoration: none;
@@ -155,12 +213,57 @@
             border-radius: 30px;
             font-weight: 500;
             transition: all 0.3s ease;
+            align-self: flex-start;
         }
 
         .btn:hover {
             background: linear-gradient(135deg, #0056b3, #003d80);
             transform: scale(1.05);
             box-shadow: 0 4px 10px rgba(0, 86, 179, 0.3);
+        }
+
+        /* Featured News */
+        .featured-news {
+            background: linear-gradient(135deg, #216fc7, #1a5dbd);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .featured-news img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .featured-content {
+            flex: 1;
+        }
+
+        .featured-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .featured-content p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .featured-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .featured-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         /* Footer */
@@ -170,6 +273,7 @@
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 60px;
         }
 
         footer a {
@@ -187,65 +291,81 @@
             .header-container {
                 flex-direction: column;
                 text-align: center;
+                gap: 15px;
             }
 
             nav ul {
                 flex-direction: row;
                 gap: 10px;
                 flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .news-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
             }
 
             .news-item {
-                padding: 20px 15px;
+                padding: 20px;
             }
 
             .news-item img {
-                height: 250px;
-                border-radius: 8px;
+                height: 180px;
             }
 
             .news-item h3 {
                 font-size: 1.2rem;
-                margin-bottom: 10px;
             }
 
-            .news-item p {
-                font-size: 0.95rem;
-                line-height: 1.7;
+            .featured-news {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+
+            .featured-news img {
+                width: 100%;
+                height: 200px;
             }
         }
 
         @media (max-width: 480px) {
             .logo {
-                height: 40px;
+                height: 60px;
             }
 
             .header-container h1 {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
             .news-item {
-                padding: 15px 10px;
+                padding: 15px;
             }
 
             .news-item img {
-                height: 200px;
-                border-radius: 6px;
+                height: 160px;
             }
 
             .news-item h3 {
                 font-size: 1.1rem;
-                margin-bottom: 8px;
             }
 
             .news-item p {
                 font-size: 0.9rem;
-                line-height: 1.6;
             }
 
             nav ul li a {
                 font-size: 0.8rem;
                 padding: 8px 12px;
+            }
+
+            .featured-news {
+                padding: 20px;
+            }
+
+            .featured-content h3 {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -253,57 +373,165 @@
 <body>
     <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
 
-    <header>
+    <header role="banner">
         <div class="header-container">
-            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" aria-hidden="true">
-            <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
-            <nav>
+            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท Bitwise" class="logo">
+            <h1>E-Learning สำหรับอบรมพนักงาน</h1>
+            <nav role="navigation" aria-label="เมนูหลัก">
                 <ul>
                     <li><a href="index.html">หน้าแรก</a></li>
                     <li><a href="course.html">หลักสูตร</a></li>
-                    <li><a href="news.html">ข่าวสาร</a></li>
+                    <li><a href="news.html" aria-current="page">ข่าวสาร</a></li>
                     <li><a href="contact.html">ติดต่อเรา</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <div class="breadcrumb">
+        <a href="index.html">หน้าแรก</a> &gt; <span>ข่าวสาร</span>
+    </div>
+
     <main id="main-content">
-        <section id="news">
+        <section id="news" aria-labelledby="news-title">
             <div class="container">
-                <h2>ข่าวสารและบทความ</h2>
+                <h2 id="news-title">ข่าวสารและบทความล่าสุด</h2>
+
+                <!-- Featured News -->
+                <article class="featured-news">
+                    <img src="assets/featured-news.png" alt="ข่าวสารเด่นประจำเดือน" loading="lazy">
+                    <div class="featured-content">
+                        <h3>เปิดอบรมหลักสูตรใหม่! พัฒนาทักษะสำหรับยุคดิจิทัล</h3>
+                        <p>บิทไว้ส์เปิดอบรมหลักสูตรใหม่ล่าสุดเพื่อพัฒนาทักษะพนักงานให้ทันสมัย พร้อมรับมือกับการเปลี่ยนแปลงทางเทคโนโลยี</p>
+                        <a href="featured-news.html" class="btn featured-btn">
+                            <i class="fas fa-star"></i> อ่านข่าวเด่น
+                        </a>
+                    </div>
+                </article>
+
                 <div class="news-container">
                     <!-- News Item 1 -->
-                    <div class="news-item">
-                        <img src="assets/news1.png" alt="ภาพข่าวสาร 1" loading="lazy">
-                        <h3>ประชาสัมพันธ์ 📢📢📢📢📢📢</h3>
-                        <p>ร้านแว่นตา นัมเบอร์ไนน์ ออฟติค เปิดบูทให้บริการวัดสายตาและจำหน่ายแว่นตาแก่พนักงาน</p>
-                        <a href="news-detail1.html" class="btn">อ่านเพิ่มเติม</a>
-                    </div>
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <span class="news-category">บริการพนักงาน</span>
+                            <span class="news-date">
+                                <i class="far fa-calendar"></i> 15 มี.ค. 2024
+                            </span>
+                        </div>
+                        <img src="assets/news1.png" alt="บูทร้านแว่นตา นัมเบอร์ไนน์ ออฟติค" loading="lazy">
+                        <h3>ประชาสัมพันธ์ 📢 บริการวัดสายตาและแว่นตาสำหรับพนักงาน</h3>
+                        <p>ร้านแว่นตา นัมเบอร์ไนน์ ออฟติค เปิดบูทให้บริการวัดสายตาและจำหน่ายแว่นตาแก่พนักงานบิทไว้ส์โดยเฉพาะ ในราคาพิเศษ</p>
+                        <a href="news-detail1.html" class="btn" aria-label="อ่านเพิ่มเติมเกี่ยวกับบริการวัดสายตา">
+                            <i class="fas fa-arrow-right"></i> อ่านเพิ่มเติม
+                        </a>
+                    </article>
+
                     <!-- News Item 2 -->
-                    <div class="news-item">
-                        <img src="assets/news2.png" alt="ภาพข่าวสาร 2" loading="lazy">
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <span class="news-category">การอบรม</span>
+                            <span class="news-date">
+                                <i class="far fa-calendar"></i> 12 มี.ค. 2024
+                            </span>
+                        </div>
+                        <img src="assets/news2.png" alt="อบรมหลักสูตร 5ส พื้นฐาน" loading="lazy">
                         <h3>เชิญเข้าร่วมอบรมหลักสูตร 5ส พื้นฐาน และทำข้อสอบหลังอบรม</h3>
-                        <p>พนักงานท่านใด ทำข้อสอบ ได้คะแนนผ่าน 80% ( 9-10 คะแนน ) รับแสตมป์ 5 ดวง 🔥🔥🔥🔥🔥</p>
-                        <p>หรือพนักงานท่านใดได้คะแนนน้อยกว่า 80% ( 0-8 คะแนน ) รับแสตมป์ 3 ดวง 🔥🔥🔥 </p>
-                        <a href="news-detail2.html" class="btn">อ่านเพิ่มเติม</a>
-                    </div>
+                        <p>พนักงานท่านใดทำข้อสอบได้คะแนนผ่าน 80% (9-10 คะแนน) รับแสตมป์ 5 ดวง 🔥 หรือได้คะแนนน้อยกว่า 80% (0-8 คะแนน) รับแสตมป์ 3 ดวง 🔥</p>
+                        <a href="news-detail2.html" class="btn" aria-label="อ่านเพิ่มเติมเกี่ยวกับการอบรมหลักสูตร 5ส">
+                            <i class="fas fa-arrow-right"></i> อ่านเพิ่มเติม
+                        </a>
+                    </article>
+
                     <!-- News Item 3 -->
-                    <div class="news-item">
-                        <img src="assets/news3.png" alt="ภาพข่าวสาร 3" loading="lazy">
-                        <h3>ประชาสัมพันธ์ 📢📢📢📢📢📢</h3>
-                        <p>บิทไว้ส์ จัดโปรโมชั่นต้อนรับหน้าร้อนด้วยแอร์ราคาพิเศษ สำหรับพนักงานเท่านั้น!!</p>
-                        <a href="news-detail3.html" class="btn">อ่านเพิ่มเติม</a>
-                    </div>
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <span class="news-category">โปรโมชั่น</span>
+                            <span class="news-date">
+                                <i class="far fa-calendar"></i> 10 มี.ค. 2024
+                            </span>
+                        </div>
+                        <img src="assets/news3.png" alt="โปรโมชั่นแอร์หน้าร้อน" loading="lazy">
+                        <h3>ประชาสัมพันธ์ 📢 โปรโมชั่นต้อนรับหน้าร้อน</h3>
+                        <p>บิทไว้ส์จัดโปรโมชั่นต้อนรับหน้าร้อนด้วยแอร์ราคาพิเศษสำหรับพนักงานเท่านั้น!! พร้อมบริการติดตั้งและดูแลหลังการขายโดยทีมงานมืออาชีพ</p>
+                        <a href="news-detail3.html" class="btn" aria-label="อ่านเพิ่มเติมเกี่ยวกับโปรโมชั่นแอร์">
+                            <i class="fas fa-arrow-right"></i> อ่านเพิ่มเติม
+                        </a>
+                    </article>
+
+                    <!-- News Item 4 -->
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <span class="news-category">กิจกรรม</span>
+                            <span class="news-date">
+                                <i class="far fa-calendar"></i> 8 มี.ค. 2024
+                            </span>
+                        </div>
+                        <img src="assets/news4.png" alt="กิจกรรมพัฒนาทักษะพนักงาน" loading="lazy">
+                        <h3>Workshop พัฒนาทักษะการสื่อสารอย่างมืออาชีพ</h3>
+                        <p>ร่วม Workshop พิเศษเพื่อพัฒนาทักษะการสื่อสารในที่ทำงาน เรียนรู้เทคนิคการนำเสนอและการสื่อสารที่มีประสิทธิภาพ</p>
+                        <a href="news-detail4.html" class="btn" aria-label="อ่านเพิ่มเติมเกี่ยวกับ Workshop">
+                            <i class="fas fa-arrow-right"></i> อ่านเพิ่มเติม
+                        </a>
+                    </article>
+
+                    <!-- News Item 5 -->
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <span class="news-category">สวัสดิการ</span>
+                            <span class="news-date">
+                                <i class="far fa-calendar"></i> 5 มี.ค. 2024
+                            </span>
+                        </div>
+                        <img src="assets/news5.png" alt="สวัสดิการสุขภาพพนักงาน" loading="lazy">
+                        <h3>ตรวจสุขภาพประจำปีสำหรับพนักงานทุกท่าน</h3>
+                        <p>บริษัทจัดโครงการตรวจสุขภาพประจำปีให้พนักงานทุกท่าน พร้อมบริการตรวจสุขภาพพื้นฐานและให้คำปรึกษาด้านสุขภาพ</p>
+                        <a href="news-detail5.html" class="btn" aria-label="อ่านเพิ่มเติมเกี่ยวกับการตรวจสุขภาพ">
+                            <i class="fas fa-arrow-right"></i> อ่านเพิ่มเติม
+                        </a>
+                    </article>
+
+                    <!-- News Item 6 -->
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <span class="news-category">เทคโนโลยี</span>
+                            <span class="news-date">
+                                <i class="far fa-calendar"></i> 1 มี.ค. 2024
+                            </span>
+                        </div>
+                        <img src="assets/news6.png" alt="อัพเดทระบบ e-Learning" loading="lazy">
+                        <h3>อัพเดทระบบ e-Learning รุ่นใหม่ พร้อมใช้งานแล้ว!</h3>
+                        <p>ระบบ e-Learning รุ่นใหม่มาพร้อมฟีเจอร์ที่ทันสมัยมากขึ้น รองรับการเรียนบนมือถือ และมีแบบทดสอบที่หลากหลาย</p>
+                        <a href="news-detail6.html" class="btn" aria-label="อ่านเพิ่มเติมเกี่ยวกับอัพเดทระบบ">
+                            <i class="fas fa-arrow-right"></i> อ่านเพิ่มเติม
+                        </a>
+                    </article>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
-            <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
+            <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="privacy-policy.html">นโยบายความเป็นส่วนตัว</a></p>
         </div>
     </footer>
+
+    <script>
+        // เพิ่มฟังก์ชัน JavaScript สำหรับการโต้ตอบเพิ่มเติม
+        document.addEventListener('DOMContentLoaded', function() {
+            // เพิ่มเอฟเฟกต์เมื่อโหลดหน้าเว็บ
+            const newsItems = document.querySelectorAll('.news-item');
+            newsItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
 </body>
 </html>

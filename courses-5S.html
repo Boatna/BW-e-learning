@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>e-Learning สำหรับอบรมพนักงาน</title>
+  <meta name="description" content="หลักสูตร 5ส (5S) สำหรับอบรมพนักงาน - เครื่องมือพื้นฐานในการจัดระเบียบสถานที่ทำงานอย่างมีประสิทธิภาพและปลอดภัย">
+  <title>หลักสูตร 5ส - e-Learning สำหรับอบรมพนักงาน</title>
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="Favicon (2).png" />
   <link rel="manifest" href="manifest.json" />
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
       margin: 0;
@@ -41,6 +44,7 @@
       background: linear-gradient(135deg, #216fc7, #216fc7);
       color: white;
       padding: 20px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     .header-container {
       display: flex;
@@ -52,6 +56,10 @@
     }
     .logo {
       height: 80px;
+      transition: transform 0.3s ease;
+    }
+    .logo:hover {
+      transform: scale(1.05);
     }
     nav ul {
       list-style: none;
@@ -182,60 +190,6 @@
     footer a:hover {
       color: #0056b3;
     }
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        text-align: center;
-      }
-      nav ul {
-        flex-direction: row;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-      .section h2 {
-        font-size: 1.4rem;
-      }
-      .section p {
-        font-size: 0.9rem;
-      }
-      .btn,
-      .download-button {
-        font-size: 0.9rem;
-        padding: 10px 15px;
-      }
-      .action-buttons {
-        flex-direction: row;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-    }
-    @media (max-width: 480px) {
-      .logo {
-        height: 40px;
-      }
-      .header-container h1 {
-        font-size: 1.1rem;
-      }
-      .section h2 {
-        font-size: 1.2rem;
-      }
-      .section p {
-        font-size: 0.8rem;
-      }
-      .section table {
-        font-size: 0.8rem;
-      }
-      .btn,
-      .download-button {
-        font-size: 0.8rem;
-        padding: 8px 12px;
-      }
-      .action-buttons {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
 
     /* Custom styling for the 5S section */
     .steps-list {
@@ -281,15 +235,94 @@
       border-radius: 10px;
       margin-top: 20px;
     }
+
+    .breadcrumb {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .breadcrumb a {
+      color: #216fc7;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      nav ul {
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .section h2 {
+        font-size: 1.4rem;
+      }
+      .section p {
+        font-size: 0.9rem;
+      }
+      .btn,
+      .download-button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+      }
+      .action-buttons {
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .steps-list li {
+        padding: 12px 15px;
+      }
+    }
+    @media (max-width: 480px) {
+      .logo {
+        height: 60px;
+      }
+      .header-container h1 {
+        font-size: 1.2rem;
+      }
+      .section h2 {
+        font-size: 1.2rem;
+      }
+      .section p {
+        font-size: 0.8rem;
+      }
+      .section table {
+        font-size: 0.8rem;
+      }
+      .btn,
+      .download-button {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+      }
+      .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .steps-list li {
+        padding: 10px 12px;
+      }
+    }
   </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
-  <header>
+  
+  <header role="banner">
     <div class="header-container">
-      <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" aria-hidden="true" />
-      <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
-      <nav>
+      <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท Bitwise" class="logo" />
+      <h1>E-Learning สำหรับอบรมพนักงาน</h1>
+      <nav role="navigation" aria-label="เมนูหลัก">
         <ul>
           <li><a href="index.html">หน้าแรก</a></li>
           <li><a href="course.html">หลักสูตร</a></li>
@@ -300,57 +333,71 @@
     </div>
   </header>
 
+  <div class="breadcrumb">
+    <a href="index.html">หน้าแรก</a> &gt; <a href="course.html">หลักสูตร</a> &gt; <span>หลักสูตร 5ส</span>
+  </div>
+
   <main id="main-content">
-    <section class="section">
+    <section class="section" aria-labelledby="what-is-5s">
       <div class="container">
-        <h2>5ส (5S) คืออะไร?</h2>
+        <h2 id="what-is-5s">5ส (5S) คืออะไร?</h2>
         <p>5ส (5S) คือ เครื่องมือพื้นฐานในการจัดระเบียบสถานที่ทำงานอย่างมีประสิทธิภาพและปลอดภัย ซึ่งประกอบด้วย 5 ขั้นตอนจากภาษาญี่ปุ่น ได้แก่:</p>
         <ul class="steps-list">
           <li>
             <strong>สะสาง (Seiri)</strong> – แยกของที่จำเป็นกับไม่จำเป็น
-            <a href="https://youtu.be/WtXUoulQIeE " class="video-btn" target="_blank">▶️ Video สะสาง</a>
+            <a href="https://youtu.be/WtXUoulQIeE" class="video-btn" target="_blank" aria-label="ดูวิดีโอเกี่ยวกับการสะสาง">
+              <i class="fas fa-play-circle"></i> ดูวิดีโอการสะสาง
+            </a>
           </li>
           <li>
             <strong>สะดวก (Seiton)</strong> – จัดวางสิ่งของให้ค้นหาและใช้งานได้ง่าย
-            <a href="https://youtu.be/TMy6mko6zHU " class="video-btn" target="_blank">▶️ Video สะดวก</a>
+            <a href="https://youtu.be/TMy6mko6zHU" class="video-btn" target="_blank" aria-label="ดูวิดีโอเกี่ยวกับการสะดวก">
+              <i class="fas fa-play-circle"></i> ดูวิดีโอการสะดวก
+            </a>
           </li>
           <li>
             <strong>สะอาด (Seiso)</strong> – ทำความสะอาดสถานที่และอุปกรณ์
-            <a href="https://youtu.be/uWs4BnDSj4U " class="video-btn" target="_blank">▶️ Video สะอาด</a>
+            <a href="https://youtu.be/uWs4BnDSj4U" class="video-btn" target="_blank" aria-label="ดูวิดีโอเกี่ยวกับการสะอาด">
+              <i class="fas fa-play-circle"></i> ดูวิดีโอการสะอาด
+            </a>
           </li>
           <li>
             <strong>สร้างมาตรฐาน (Seiketsu)</strong> – รักษาความเป็นระเบียบให้คงอยู่
-            <a href="https://youtu.be/-M2K_FoaU0U " class="video-btn" target="_blank">▶️ Video สร้างมาตรฐาน</a>
+            <a href="https://youtu.be/-M2K_FoaU0U" class="video-btn" target="_blank" aria-label="ดูวิดีโอเกี่ยวกับการสร้างมาตรฐาน">
+              <i class="fas fa-play-circle"></i> ดูวิดีโอการสร้างมาตรฐาน
+            </a>
           </li>
           <li>
             <strong>สร้างวินัย (Shitsuke)</strong> – ปลูกฝังวินัยในการปฏิบัติอย่างต่อเนื่อง
-            <a href="https://youtu.be/AjMzM-H9ZQg " class="video-btn" target="_blank">▶️ Video สร้างวินัย</a>
+            <a href="https://youtu.be/AjMzM-H9ZQg" class="video-btn" target="_blank" aria-label="ดูวิดีโอเกี่ยวกับการสร้างวินัย">
+              <i class="fas fa-play-circle"></i> ดูวิดีโอการสร้างวินัย
+            </a>
           </li>
         </ul>
         <div class="summary-box">
-          <p>🛠️ <strong>5ส = เครื่องมือ + ระบบ + กิจกรรม</strong> ที่ผสานกันเพื่อสร้าง "คุณภาพชีวิตและประสิทธิภาพการทำงาน"</p>
+          <p><i class="fas fa-tools"></i> <strong>5ส = เครื่องมือ + ระบบ + กิจกรรม</strong> ที่ผสานกันเพื่อสร้าง "คุณภาพชีวิตและประสิทธิภาพการทำงาน"</p>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" aria-labelledby="why-5s">
       <div class="container">
-        <h2>ทำไมต้องทำ 5ส?</h2>
+        <h2 id="why-5s">ทำไมต้องทำ 5ส?</h2>
         <p>เหตุผลหลัก:</p>
         <ul>
-          <li>เพื่อป้องกันอุบัติเหตุ – ลดสิ่งกีดขวาง และความไม่เป็นระเบียบ</li>
-          <li>เพื่อความสะดวกในการทำงาน – เข้าถึงอุปกรณ์ง่าย ค้นหาของไว</li>
-          <li>เพื่อเพิ่มประสิทธิภาพการทำงาน – ลดเวลา ลดความสูญเปล่า</li>
-          <li>เพื่อใช้ทรัพยากรอย่างคุ้มค่า – ลดต้นทุนโดยใช้แต่ของจำเป็น</li>
-          <li>เพื่อสร้างบรรยากาศที่ดี – สภาพแวดล้อมสะอาดและปลอดภัย</li>
-          <li>เพื่อสร้างวินัยและความภาคภูมิใจ – ส่งเสริมให้ทุกคนมีส่วนร่วมและรู้สึกเป็นเจ้าของ</li>
+          <li><i class="fas fa-shield-alt"></i> เพื่อป้องกันอุบัติเหตุ – ลดสิ่งกีดขวาง และความไม่เป็นระเบียบ</li>
+          <li><i class="fas fa-search"></i> เพื่อความสะดวกในการทำงาน – เข้าถึงอุปกรณ์ง่าย ค้นหาของไว</li>
+          <li><i class="fas fa-chart-line"></i> เพื่อเพิ่มประสิทธิภาพการทำงาน – ลดเวลา ลดความสูญเปล่า</li>
+          <li><i class="fas fa-money-bill-wave"></i> เพื่อใช้ทรัพยากรอย่างคุ้มค่า – ลดต้นทุนโดยใช้แต่ของจำเป็น</li>
+          <li><i class="fas fa-leaf"></i> เพื่อสร้างบรรยากาศที่ดี – สภาพแวดล้อมสะอาดและปลอดภัย</li>
+          <li><i class="fas fa-users"></i> เพื่อสร้างวินัยและความภาคภูมิใจ – ส่งเสริมให้ทุกคนมีส่วนร่วมและรู้สึกเป็นเจ้าของ</li>
         </ul>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" aria-labelledby="benefits-5s">
       <div class="container">
-        <h2>ประโยชน์ที่องค์กรจะได้รับจากระบบ 5ส</h2>
+        <h2 id="benefits-5s">ประโยชน์ที่องค์กรจะได้รับจากระบบ 5ส</h2>
         <table>
           <thead>
             <tr>
@@ -360,35 +407,35 @@
           </thead>
           <tbody>
             <tr>
-              <td>P – Productivity</td>
+              <td><i class="fas fa-industry"></i> P – Productivity</td>
               <td>ปริมาณงานเพิ่มขึ้น</td>
             </tr>
             <tr>
-              <td>Q – Quality</td>
+              <td><i class="fas fa-award"></i> Q – Quality</td>
               <td>คุณภาพงานดีขึ้น</td>
             </tr>
             <tr>
-              <td>C – Cost</td>
+              <td><i class="fas fa-chart-pie"></i> C – Cost</td>
               <td>ลดค่าใช้จ่ายไม่จำเป็น</td>
             </tr>
             <tr>
-              <td>D – Delivery</td>
+              <td><i class="fas fa-shipping-fast"></i> D – Delivery</td>
               <td>ส่งมอบงานได้รวดเร็วขึ้น</td>
             </tr>
             <tr>
-              <td>S – Safety</td>
+              <td><i class="fas fa-hard-hat"></i> S – Safety</td>
               <td>ความปลอดภัยในพื้นที่ทำงาน</td>
             </tr>
             <tr>
-              <td>M – Morale</td>
+              <td><i class="fas fa-smile"></i> M – Morale</td>
               <td>ขวัญและกำลังใจของพนักงานดีขึ้น</td>
             </tr>
             <tr>
-              <td>E – Environment</td>
+              <td><i class="fas fa-globe-asia"></i> E – Environment</td>
               <td>สิ่งแวดล้อมดีขึ้น ลดโลกร้อน</td>
             </tr>
             <tr>
-              <td>E – Ethic</td>
+              <td><i class="fas fa-handshake"></i> E – Ethic</td>
               <td>จรรยาบรรณ และคุณธรรมเพิ่มขึ้น</td>
             </tr>
           </tbody>
@@ -396,26 +443,43 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" aria-labelledby="actions-5s">
       <div class="container">
+        <h2 id="actions-5s">เริ่มต้นเรียนรู้กับหลักสูตร 5ส</h2>
         <div class="action-buttons">
-          <a href="หลักสูตร5สขั้นพื้นฐาน 2025 (19-03-25).pdf" download class="download-button">เอกสารหลักสูตรการอบรม</a>
-          <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNVlUVzFLUExUMUlCVEpOTkgzWVlZNlZCWi4u  " class="btn" target="_blank">เริ่มทดสอบ</a>
+          <a href="หลักสูตร5สขั้นพื้นฐาน_2025_(19-03-25).pdf" download class="download-button" aria-label="ดาวน์โหลดเอกสารหลักสูตรการอบรม 5ส">
+            <i class="fas fa-download"></i> ดาวน์โหลดเอกสารหลักสูตร
+          </a>
+          <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrmxWIeefxFVApothn6X2KGVUNVlUVzFLUExUMUlCVEpOTkgzWVlZNlZCWi4u" class="btn" target="_blank" aria-label="เริ่มทำแบบทดสอบหลักสูตร 5ส">
+            <i class="fas fa-play-circle"></i> เริ่มทำแบบทดสอบ
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="container">
-      <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
+      <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="privacy-policy.html">นโยบายความเป็นส่วนตัว</a></p>
     </div>
   </footer>
 
-  <!-- JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js "></script>
   <script>
-    // เพิ่มฟังก์ชัน JavaScript หากต้องการใช้งานเพิ่มเติม
+    // เพิ่มฟังก์ชัน JavaScript สำหรับการโต้ตอบเพิ่มเติม
+    document.addEventListener('DOMContentLoaded', function() {
+      // เพิ่มเอฟเฟกต์เมื่อโหลดหน้าเว็บ
+      const sections = document.querySelectorAll('.section');
+      sections.forEach((section, index) => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        setTimeout(() => {
+          section.style.opacity = '1';
+          section.style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+    });
   </script>
 </body>
 </html>
