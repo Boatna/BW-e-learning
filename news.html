@@ -52,6 +52,9 @@
             color: white;
             padding: 20px 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .header-container {
@@ -70,6 +73,16 @@
 
         .logo:hover {
             transform: scale(1.05);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         nav ul {
@@ -287,85 +300,234 @@
         }
 
         /* Responsive Design */
+        
+        /* สำหรับ iPad (768px - 1024px) */
+        @media (max-width: 1024px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            main {
+                padding: 30px 15px;
+            }
+            
+            .news-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .news-item {
+                padding: 20px;
+            }
+            
+            .featured-news {
+                padding: 25px;
+                gap: 20px;
+            }
+            
+            .featured-news img {
+                width: 180px;
+                height: 140px;
+            }
+        }
+        
+        /* สำหรับมือถือ (768px ลงมา) */
         @media (max-width: 768px) {
             .header-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-
-            nav ul {
                 flex-direction: row;
-                gap: 10px;
-                flex-wrap: wrap;
-                justify-content: center;
+                justify-content: space-between;
+                padding: 10px 15px;
             }
-
+            
+            .header-container h1 {
+                font-size: 1.2rem;
+                margin: 0 10px;
+            }
+            
+            .logo {
+                height: 60px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #216fc7, #216fc7);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 12px 15px;
+                border-radius: 8px;
+                text-align: center;
+            }
+            
+            .breadcrumb {
+                padding: 0 15px;
+                margin: 15px auto;
+            }
+            
+            main {
+                padding: 20px 10px;
+            }
+            
             .news-container {
                 grid-template-columns: 1fr;
                 gap: 25px;
             }
-
+            
             .news-item {
                 padding: 20px;
             }
-
+            
             .news-item img {
                 height: 180px;
             }
-
+            
             .news-item h3 {
                 font-size: 1.2rem;
             }
-
+            
+            .news-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
             .featured-news {
                 flex-direction: column;
                 text-align: center;
                 padding: 25px;
+                gap: 15px;
             }
-
+            
             .featured-news img {
                 width: 100%;
                 height: 200px;
             }
+            
+            .featured-content h3 {
+                font-size: 1.3rem;
+            }
         }
-
+        
+        /* สำหรับมือถือขนาดเล็ก (480px ลงมา) */
         @media (max-width: 480px) {
-            .logo {
-                height: 60px;
-            }
-
             .header-container h1 {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
-
+            
+            .logo {
+                height: 50px;
+            }
+            
+            .breadcrumb {
+                font-size: 0.9rem;
+                padding: 0 10px;
+            }
+            
+            main {
+                padding: 15px 8px;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+                margin-bottom: 20px;
+            }
+            
             .news-item {
                 padding: 15px;
             }
-
+            
             .news-item img {
                 height: 160px;
             }
-
+            
             .news-item h3 {
                 font-size: 1.1rem;
             }
-
+            
             .news-item p {
                 font-size: 0.9rem;
             }
-
-            nav ul li a {
+            
+            .news-meta {
                 font-size: 0.8rem;
-                padding: 8px 12px;
             }
-
+            
+            .news-category {
+                font-size: 0.75rem;
+                padding: 3px 10px;
+            }
+            
+            .btn {
+                font-size: 0.85rem;
+                padding: 8px 16px;
+            }
+            
             .featured-news {
                 padding: 20px;
             }
-
+            
             .featured-content h3 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
+            }
+            
+            .featured-content p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* สำหรับอุปกรณ์ที่มีความสูงต่ำ */
+        @media (max-height: 600px) and (orientation: landscape) {
+            header {
+                padding: 10px 0;
+            }
+            
+            .logo {
+                height: 50px;
+            }
+            
+            .breadcrumb {
+                margin: 10px auto;
+            }
+            
+            main {
+                padding: 15px 10px;
+            }
+            
+            .news-item {
+                padding: 15px;
+            }
+            
+            .featured-news {
+                padding: 20px;
             }
         }
     </style>
@@ -377,6 +539,9 @@
         <div class="header-container">
             <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท Bitwise" class="logo">
             <h1>E-Learning สำหรับอบรมพนักงาน</h1>
+            <button class="mobile-menu-btn" aria-label="เปิดเมนู">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav role="navigation" aria-label="เมนูหลัก">
                 <ul>
                     <li><a href="index.html">หน้าแรก</a></li>
@@ -399,7 +564,7 @@
 
                 <!-- Featured News -->
                 <article class="featured-news">
-                    <img src="assets/featured-news.png" alt="ข่าวสารเด่นประจำเดือน" loading="lazy">
+                    <img src="assets/ไปดีกว่า.png" alt="ข่าวสารเด่นประจำเดือน" loading="lazy">
                     <div class="featured-content">
                         <h3>เปิดอบรมหลักสูตรใหม่! พัฒนาทักษะสำหรับยุคดิจิทัล</h3>
                         <p>บิทไว้ส์เปิดอบรมหลักสูตรใหม่ล่าสุดเพื่อพัฒนาทักษะพนักงานให้ทันสมัย พร้อมรับมือกับการเปลี่ยนแปลงทางเทคโนโลยี</p>
@@ -517,6 +682,34 @@
     </footer>
 
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            const icon = this.querySelector('i');
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                this.setAttribute('aria-label', 'ปิดเมนู');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                this.setAttribute('aria-label', 'เปิดเมนู');
+            }
+        });
+        
+        // ปิดเมนูเมื่อคลิกลิงก์
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                mobileMenuBtn.setAttribute('aria-label', 'เปิดเมนู');
+            });
+        });
+        
         // เพิ่มฟังก์ชัน JavaScript สำหรับการโต้ตอบเพิ่มเติม
         document.addEventListener('DOMContentLoaded', function() {
             // เพิ่มเอฟเฟกต์เมื่อโหลดหน้าเว็บ

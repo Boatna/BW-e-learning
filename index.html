@@ -51,6 +51,17 @@
     .logo:hover {
       transform: scale(1.05);
     }
+    
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
     nav ul {
       list-style: none;
       display: flex;
@@ -68,6 +79,7 @@
       background-color: rgba(255, 255, 255, 0.2);
       transform: scale(1.1);
     }
+    
     /* Hero */
     .hero {
       background-size: cover;
@@ -108,6 +120,7 @@
       margin-bottom: 20px;
       max-width: 600px;
     }
+    
     /* Buttons */
     .btn {
       display: inline-block;
@@ -155,6 +168,7 @@
       background-color: #216fc7;
       color: white;
     }
+    
     /* Courses Section */
     .courses {
       padding: 40px 20px;
@@ -237,12 +251,14 @@
       font-size: 0.85rem;
       padding: 8px;
     }
+    
     /* Welcome Section */
     .welcome {
       text-align: center;
       padding: 60px 20px;
       background-color: #f0f7ff;
     }
+    
     /* Image Section */
     .image-section {
       text-align: center;
@@ -258,6 +274,7 @@
     .image-section img:hover {
       transform: scale(1.02);
     }
+    
     /* Video Section */
     .video-section {
       padding: 40px 20px;
@@ -288,6 +305,7 @@
       width: 100%;
       height: 200px;
     }
+    
     /* Features Section */
     .features {
       padding: 60px 20px;
@@ -320,6 +338,7 @@
       margin-bottom: 10px;
       color: #216fc7;
     }
+    
     /* Footer */
     footer {
       background-color: #ffffff;
@@ -369,6 +388,7 @@
       transform: scale(1.1);
       background-color: #1a5dbd;
     }
+    
     /* Loading Animation */
     .loading {
       display: inline-block;
@@ -382,41 +402,249 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-    /* Responsive */
+    
+    /* Responsive Styles */
+    
+    /* สำหรับ iPad (768px - 1024px) */
+    @media (max-width: 1024px) {
+      .header-container {
+        padding: 0 15px;
+      }
+      
+      .hero {
+        padding: 80px 20px;
+        min-height: 350px;
+      }
+      
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .course-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+      
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer-links {
+        flex-wrap: wrap;
+      }
+    }
+    
+    /* สำหรับมือถือ (768px ลงมา) */
     @media (max-width: 768px) {
       .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: center;
+        padding: 10px 15px;
+      }
+      
+      .header-container h1 {
+        font-size: 1.2rem;
+        margin: 0 10px;
+      }
+      
+      .logo {
+        height: 60px;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, #216fc7, #1a5dbd);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+      
+      nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      nav ul {
         flex-direction: column;
+        padding: 20px;
+        gap: 10px;
+      }
+      
+      nav ul li a {
+        display: block;
+        padding: 12px 15px;
+        border-radius: 8px;
         text-align: center;
       }
-      .hero h2 {
-        font-size: 2rem;
+      
+      .hero {
+        padding: 60px 15px;
+        min-height: 300px;
       }
+      
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      
       .hero p {
         font-size: 1rem;
+        margin-bottom: 25px;
       }
-      nav ul {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 15px;
+      
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
       }
-      nav ul li a {
-        font-size: 0.85rem;
-        padding: 8px 12px;
+      
+      .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
       }
+      
       .course-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
       }
+      
+      .course {
+        padding: 15px;
+      }
+      
+      .course-image {
+        height: 160px;
+      }
+      
+      .btn-action {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .btn-action a {
+        width: 100%;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .feature {
+        padding: 20px 15px;
+      }
+      
+      .feature i {
+        font-size: 2rem;
+      }
+      
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+      
       .video-card iframe {
         height: 180px;
       }
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
+      
       .footer-links {
         flex-direction: column;
         gap: 10px;
+      }
+      
+      .footer-content {
+        padding: 0 15px;
+      }
+      
+      .welcome, .courses, .features, .video-section {
+        padding: 40px 15px;
+      }
+    }
+    
+    /* สำหรับมือถือขนาดเล็ก (480px ลงมา) */
+    @media (max-width: 480px) {
+      .header-container h1 {
+        font-size: 1rem;
+      }
+      
+      .logo {
+        height: 50px;
+      }
+      
+      .hero {
+        padding: 50px 15px;
+        min-height: 250px;
+      }
+      
+      .hero h2 {
+        font-size: 1.5rem;
+      }
+      
+      .hero p {
+        font-size: 0.9rem;
+      }
+      
+      .section-title {
+        font-size: 1.4rem;
+      }
+      
+      .course h3 {
+        font-size: 1.1rem;
+      }
+      
+      .course p {
+        font-size: 0.85rem;
+      }
+      
+      .course-info span, .course-participants span {
+        font-size: 0.75rem;
+      }
+      
+      .feature h3 {
+        font-size: 1.1rem;
+      }
+      
+      .feature p {
+        font-size: 0.9rem;
+      }
+    }
+    
+    /* สำหรับอุปกรณ์ที่มีความสูงต่ำ */
+    @media (max-height: 600px) and (orientation: landscape) {
+      .hero {
+        padding: 40px 20px;
+        min-height: 250px;
+      }
+      
+      .hero h2 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+      
+      .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
       }
     }
   </style>
@@ -426,7 +654,10 @@
   <header role="banner">
     <div class="header-container">
       <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" loading="lazy" />
-      <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
+      <h1>E-Learning สำหรับอบรมพนักงาน</h1>
+      <button class="mobile-menu-btn" aria-label="เปิดเมนู">
+        <i class="fas fa-bars"></i>
+      </button>
       <nav role="navigation" aria-label="เมนูหลัก">
         <ul>
           <li><a href="index.html">หน้าแรก</a></li>
@@ -576,14 +807,6 @@
     // Hero Background Rotation
     const heroSection = document.querySelector('.hero');
     const heroImages = [
-      'assets/hero1.jpg',
-      'assets/hero2.jpg',
-      'assets/hero3.png',
-      'assets/hero4.png'
-    ];
-    
-    // ใช้รูปภาพ placeholder ถ้าไม่มีรูปภาพจริง
-    const placeholderImages = [
       'https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
@@ -592,18 +815,54 @@
     
     let currentImage = 0;
     
+    function preloadImages() {
+      heroImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+    }
+    
     function changeHeroBackground() {
-      // ใช้ placeholder ถ้าไม่มีรูปภาพในเครื่อง
-      const imagePath = heroImages[currentImage];
-      heroSection.style.backgroundImage = `url('${imagePath}')`;
+      heroSection.style.backgroundImage = `url('${heroImages[currentImage]}')`;
       currentImage = (currentImage + 1) % heroImages.length;
     }
+    
+    // โหลดรูปภาพล่วงหน้า
+    preloadImages();
     
     // เรียกครั้งแรก
     changeHeroBackground();
     
     // เปลี่ยนทุก 5 วินาที
     setInterval(changeHeroBackground, 5000);
+    
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('nav');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+      nav.classList.toggle('active');
+      const icon = this.querySelector('i');
+      if (nav.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        this.setAttribute('aria-label', 'ปิดเมนู');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        this.setAttribute('aria-label', 'เปิดเมนู');
+      }
+    });
+    
+    // ปิดเมนูเมื่อคลิกลิงก์
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+        mobileMenuBtn.setAttribute('aria-label', 'เปิดเมนู');
+      });
+    });
     
     // เพิ่ม loading state ให้ปุ่ม
     document.querySelectorAll('.btn').forEach(button => {
@@ -616,6 +875,19 @@
           }, 1000);
           e.preventDefault();
         }
+      });
+    });
+    
+    // การจัดการข้อผิดพลาดรูปภาพ
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('img');
+      const placeholder = 'https://via.placeholder.com/400x200/216fc7/ffffff?text=รูปภาพหลักสูตร';
+      
+      images.forEach(img => {
+        img.addEventListener('error', function() {
+          this.src = placeholder;
+          this.alt = 'รูปภาพไม่สามารถโหลดได้';
+        });
       });
     });
   </script>

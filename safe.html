@@ -53,6 +53,9 @@
       color: white;
       padding: 20px 0;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .header-container {
@@ -71,6 +74,16 @@
 
     .logo:hover {
       transform: scale(1.05);
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
 
     nav ul {
@@ -314,79 +327,338 @@
     }
 
     /* Responsive Design */
-    @media (max-width: 768px) {
+    
+    /* สำหรับ iPad (768px - 1024px) */
+    @media (max-width: 1024px) {
       .header-container {
-        flex-direction: column;
-        text-align: center;
+        padding: 0 15px;
+      }
+      
+      .breadcrumb {
+        padding: 0 15px;
+      }
+      
+      main {
+        padding: 30px 15px;
+      }
+      
+      .section {
+        padding: 20px;
+      }
+      
+      .section h2 {
+        font-size: 1.5rem;
+      }
+      
+      .section p {
+        font-size: 0.95rem;
+      }
+      
+      .ppe-categories {
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
       }
-
-      nav ul {
-        flex-direction: row;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
+      
+      .ppe-category {
+        padding: 15px;
       }
-
+      
+      .btn,
+      .download-button {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+      }
+    }
+    
+    /* สำหรับมือถือ (768px ลงมา) */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 15px;
+      }
+      
+      .header-container h1 {
+        font-size: 1.2rem;
+        margin: 0 10px;
+      }
+      
+      .logo {
+        height: 60px;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, #216fc7, #216fc7);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+      
+      nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        padding: 20px;
+        gap: 10px;
+      }
+      
+      nav ul li a {
+        display: block;
+        padding: 12px 15px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      
+      .breadcrumb {
+        padding: 0 15px;
+        margin: 15px auto;
+      }
+      
+      main {
+        padding: 20px 10px;
+      }
+      
+      .section {
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+      
       .section h2 {
         font-size: 1.4rem;
+        margin-bottom: 12px;
       }
-
+      
       .section p {
         font-size: 0.9rem;
+        text-align: left;
       }
-
+      
+      .section ul li {
+        padding: 6px 0;
+        font-size: 0.9rem;
+      }
+      
+      .ppe-categories {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      
+      .ppe-category {
+        padding: 12px;
+      }
+      
+      .ppe-category h3 {
+        font-size: 1rem;
+      }
+      
+      .safety-tips {
+        padding: 15px;
+      }
+      
+      .section table {
+        font-size: 0.85rem;
+      }
+      
+      .section table th,
+      .section table td {
+        padding: 8px 10px;
+      }
+      
       .btn,
       .download-button {
         font-size: 0.9rem;
         padding: 10px 15px;
       }
-
+      
       .action-buttons {
         flex-direction: row;
         gap: 10px;
         flex-wrap: wrap;
       }
-
-      .ppe-categories {
-        grid-template-columns: 1fr;
-      }
     }
-
+    
+    /* สำหรับมือถือขนาดเล็ก (480px ลงมา) */
     @media (max-width: 480px) {
-      .logo {
-        height: 60px;
-      }
-
       .header-container h1 {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
-
+      
+      .logo {
+        height: 50px;
+      }
+      
+      .breadcrumb {
+        font-size: 0.9rem;
+        padding: 0 10px;
+      }
+      
+      main {
+        padding: 15px 8px;
+      }
+      
+      .section {
+        padding: 12px;
+        margin-bottom: 15px;
+      }
+      
       .section h2 {
         font-size: 1.2rem;
+        margin-bottom: 10px;
       }
-
+      
       .section p {
         font-size: 0.8rem;
       }
-
+      
       .section ul li {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        padding: 5px 0;
       }
-
-      .section table {
+      
+      .section ul li i {
         font-size: 0.8rem;
       }
-
+      
+      .ppe-categories {
+        gap: 10px;
+      }
+      
+      .ppe-category {
+        padding: 10px;
+      }
+      
+      .ppe-category h3 {
+        font-size: 0.9rem;
+      }
+      
+      .safety-tips {
+        padding: 12px;
+        font-size: 0.85rem;
+      }
+      
+      .section table {
+        font-size: 0.75rem;
+      }
+      
+      .section table th,
+      .section table td {
+        padding: 6px 8px;
+      }
+      
       .btn,
       .download-button {
         font-size: 0.8rem;
         padding: 8px 12px;
       }
-
+      
       .action-buttons {
         flex-direction: column;
         gap: 10px;
+      }
+      
+      .action-buttons a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    /* สำหรับอุปกรณ์ที่มีความสูงต่ำ */
+    @media (max-height: 600px) and (orientation: landscape) {
+      header {
+        padding: 10px 0;
+      }
+      
+      .logo {
+        height: 50px;
+      }
+      
+      .breadcrumb {
+        margin: 10px auto;
+      }
+      
+      main {
+        padding: 15px 10px;
+      }
+      
+      .section {
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+      
+      .section h2 {
+        margin-bottom: 10px;
+      }
+      
+      .section ul li {
+        padding: 5px 0;
+      }
+      
+      .ppe-categories {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+    }
+    
+    /* สำหรับตารางบนหน้าจอเล็ก */
+    @media (max-width: 600px) {
+      .section table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      
+      .section table thead,
+      .section table tbody,
+      .section table th,
+      .section table td,
+      .section table tr {
+        display: block;
+      }
+      
+      .section table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+      
+      .section table tr {
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+      }
+      
+      .section table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+        white-space: normal;
+      }
+      
+      .section table td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-label);
+        font-weight: bold;
+        color: #216fc7;
       }
     }
   </style>
@@ -398,6 +670,9 @@
     <div class="header-container">
       <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท Bitwise" class="logo">
       <h1>E-Learning สำหรับอบรมพนักงาน</h1>
+      <button class="mobile-menu-btn" aria-label="เปิดเมนู">
+        <i class="fas fa-bars"></i>
+      </button>
       <nav role="navigation" aria-label="เมนูหลัก">
         <ul>
           <li><a href="index.html">หน้าแรก</a></li>
@@ -481,34 +756,34 @@
           <tr>
             <th>มาตรฐาน</th>
             <th>รายละเอียด</th>
-            <th>适用范围</th>
+            <th>ขอบเขตการบังคับใช้</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>ISO</td>
-            <td>มาตรฐานสากลสำหรับอุปกรณ์ป้องกันส่วนบุคคล</td>
-            <td>ทั่วโลก</td>
+            <td data-label="มาตรฐาน">ISO</td>
+            <td data-label="รายละเอียด">มาตรฐานสากลสำหรับอุปกรณ์ป้องกันส่วนบุคคล</td>
+            <td data-label="适用范围">ทั่วโลก</td>
           </tr>
           <tr>
-            <td>EN</td>
-            <td>มาตรฐานยุโรปสำหรับ PPE</td>
-            <td>ประเทศในสหภาพยุโรป</td>
+            <td data-label="มาตรฐาน">EN</td>
+            <td data-label="รายละเอียด">มาตรฐานยุโรปสำหรับ PPE</td>
+            <td data-label="适用范围">ประเทศในสหภาพยุโรป</td>
           </tr>
           <tr>
-            <td>ANSI</td>
-            <td>มาตรฐานอเมริกันสำหรับอุปกรณ์ความปลอดภัย</td>
-            <td>สหรัฐอเมริกา</td>
+            <td data-label="มาตรฐาน">ANSI</td>
+            <td data-label="รายละเอียด">มาตรฐานอเมริกันสำหรับอุปกรณ์ความปลอดภัย</td>
+            <td data-label="适用范围">สหรัฐอเมริกา</td>
           </tr>
           <tr>
-            <td>NFPA</td>
-            <td>มาตรฐานสำหรับอุปกรณ์ป้องกันอัคคีภัย</td>
-            <td>ทั่วโลก</td>
+            <td data-label="มาตรฐาน">NFPA</td>
+            <td data-label="รายละเอียด">มาตรฐานสำหรับอุปกรณ์ป้องกันอัคคีภัย</td>
+            <td data-label="适用范围">ทั่วโลก</td>
           </tr>
           <tr>
-            <td>ASTM</td>
-            <td>มาตรฐานการทดสอบวัสดุและผลิตภัณฑ์</td>
-            <td>ทั่วโลก</td>
+            <td data-label="มาตรฐาน">ASTM</td>
+            <td data-label="รายละเอียด">มาตรฐานการทดสอบวัสดุและผลิตภัณฑ์</td>
+            <td data-label="适用范围">ทั่วโลก</td>
           </tr>
         </tbody>
       </table>
@@ -555,6 +830,34 @@
   </footer>
 
   <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('nav');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+      nav.classList.toggle('active');
+      const icon = this.querySelector('i');
+      if (nav.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        this.setAttribute('aria-label', 'ปิดเมนู');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        this.setAttribute('aria-label', 'เปิดเมนู');
+      }
+    });
+    
+    // ปิดเมนูเมื่อคลิกลิงก์
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+        mobileMenuBtn.setAttribute('aria-label', 'เปิดเมนู');
+      });
+    });
+    
     // เพิ่มฟังก์ชัน JavaScript สำหรับการโต้ตอบเพิ่มเติม
     document.addEventListener('DOMContentLoaded', function() {
       // เพิ่มเอฟเฟกต์เมื่อโหลดหน้าเว็บ
@@ -568,6 +871,15 @@
           section.style.opacity = '1';
           section.style.transform = 'translateY(0)';
         }, 100 * index);
+      });
+      
+      // ปรับปรุงตารางสำหรับอุปกรณ์พกพา
+      const tableCells = document.querySelectorAll('td');
+      tableCells.forEach(cell => {
+        const headerText = cell.getAttribute('data-label');
+        if (headerText) {
+          cell.setAttribute('data-label', headerText);
+        }
       });
     });
   </script>
