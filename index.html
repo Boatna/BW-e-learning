@@ -11,6 +11,8 @@
   <link rel="manifest" href="manifest.json" />
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <!-- Style -->
   <style>
     * {
@@ -78,11 +80,16 @@
       min-height: 400px;
       background-color: #e0e0e0;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .hero::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.7);
       z-index: 0;
     }
     .hero h2,
@@ -99,6 +106,7 @@
       font-size: 1.2rem;
       color: #000;
       margin-bottom: 20px;
+      max-width: 600px;
     }
     /* Buttons */
     .btn {
@@ -153,21 +161,43 @@
       text-align: center;
       background-color: #fff;
     }
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #216fc7;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, #216fc7, #1a5dbd);
+      margin: 10px auto;
+      border-radius: 2px;
+    }
     .course-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
       margin-top: 20px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .course {
       background-color: white;
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     .course:hover {
       transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
     .course h3 {
       margin-bottom: 10px;
@@ -178,12 +208,14 @@
       font-size: 0.95rem;
       margin-bottom: 15px;
       color: #000;
+      flex-grow: 1;
     }
     .course-image {
       width: 100%;
-      height: auto;
+      height: 180px;
+      object-fit: cover;
       border-radius: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
     .course-info span,
     .course-price span,
@@ -191,17 +223,25 @@
       display: block;
       font-size: 0.8rem;
       color: #666;
+      margin-bottom: 5px;
     }
     .btn-action {
       display: flex;
       gap: 10px;
       justify-content: center;
+      margin-top: auto;
     }
     .btn-action a {
       flex: 1;
       text-align: center;
       font-size: 0.85rem;
       padding: 8px;
+    }
+    /* Welcome Section */
+    .welcome {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #f0f7ff;
     }
     /* Image Section */
     .image-section {
@@ -229,11 +269,18 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
       margin-top: 20px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .video-card {
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s;
+    }
+    .video-card:hover {
+      transform: scale(1.03);
     }
     .video-card iframe {
       border: none;
@@ -241,21 +288,99 @@
       width: 100%;
       height: 200px;
     }
+    /* Features Section */
+    .features {
+      padding: 60px 20px;
+      background-color: #f0f7ff;
+      text-align: center;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 40px auto 0;
+    }
+    .feature {
+      padding: 30px 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+    .feature i {
+      font-size: 2.5rem;
+      color: #216fc7;
+      margin-bottom: 15px;
+    }
+    .feature h3 {
+      margin-bottom: 10px;
+      color: #216fc7;
+    }
     /* Footer */
     footer {
       background-color: #ffffff;
       color: #212529;
-      padding: 15px 0;
+      padding: 30px 0 15px;
       text-align: center;
       box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     }
-    footer a {
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .footer-links a {
       color: #0077ff;
       text-decoration: none;
       transition: color 0.3s;
     }
-    footer a:hover {
+    .footer-links a:hover {
       color: #0056b3;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #216fc7;
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    .social-links a:hover {
+      transform: scale(1.1);
+      background-color: #1a5dbd;
+    }
+    /* Loading Animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
     /* Responsive */
     @media (max-width: 768px) {
@@ -274,6 +399,7 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
+        margin-top: 15px;
       }
       nav ul li a {
         font-size: 0.85rem;
@@ -285,16 +411,23 @@
       .video-card iframe {
         height: 180px;
       }
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Header -->
-  <header>
+  <header role="banner">
     <div class="header-container">
       <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo" loading="lazy" />
       <h1 style="font-size: 1.5rem;">E-Learning สำหรับอบรมพนักงาน</h1>
-      <nav>
+      <nav role="navigation" aria-label="เมนูหลัก">
         <ul>
           <li><a href="index.html">หน้าแรก</a></li>
           <li><a href="course.html">หลักสูตร</a></li>
@@ -304,26 +437,59 @@
       </nav>
     </div>
   </header>
+  
   <!-- Main -->
   <main>
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" role="banner" aria-label="ส่วนนำเสนอหลัก">
+      <h2>พัฒนาทักษะด้วยระบบ e-Learning</h2>
+      <p>ยกระดับความรู้และความสามารถของพนักงานด้วยหลักสูตรคุณภาพที่ออกแบบมาเพื่อพัฒนาองค์กรของคุณ</p>
+      <a href="course.html" class="btn btn-primary"><span>เริ่มเรียนตอนนี้</span></a>
     </section>
-    <!-- Welcome -->
-    <section class="wecome" style="text-align:center; padding: 40px 20px;">
-      <h2>ยินดีต้อนรับสู่ระบบอบรมออนไลน์</h2>
+    
+    <!-- Welcome Section -->
+    <section class="welcome" aria-labelledby="welcome-title">
+      <h2 id="welcome-title" class="section-title">ยินดีต้อนรับสู่ระบบอบรมออนไลน์</h2>
       <p>พัฒนาความรู้และทักษะกับหลักสูตรคุณภาพที่คุณสามารถเลือกเรียนได้ทุกที่ทุกเวลา</p>
-      <a href="course.html" class="btn btn-primary"><span>ดูหลักสูตร</span></a>
+      <a href="course.html" class="btn btn-primary"><span>ดูหลักสูตรทั้งหมด</span></a>
     </section>
+    
+    <!-- Features Section -->
+    <section class="features" aria-labelledby="features-title">
+      <h2 id="features-title" class="section-title">ทำไมต้องเลือกเรา</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <i class="fas fa-laptop"></i>
+          <h3>เรียนออนไลน์ได้ทุกที่</h3>
+          <p>เข้าถึงเนื้อหาการเรียนได้จากทุกอุปกรณ์ ทุกสถานที่</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <h3>ผู้เชี่ยวชาญในสาขา</h3>
+          <p>เรียนรู้จากผู้สอนที่มีประสบการณ์ตรงในอุตสาหกรรม</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-certificate"></i>
+          <h3>ใบรับรองการอบรม</h3>
+          <p>รับใบรับรองเมื่อจบหลักสูตรเพื่อเพิ่มมูลค่าให้กับองค์กร</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-headset"></i>
+          <h3>สนับสนุนตลอดเวลา</h3>
+          <p>ทีมงานพร้อมให้ความช่วยเหลือทุกขั้นตอนของการเรียน</p>
+        </div>
+      </div>
+    </section>
+    
     <!-- Courses Section -->
-    <section class="courses">
-      <h2>หลักสูตรแนะนำ</h2>
+    <section class="courses" aria-labelledby="courses-title">
+      <h2 id="courses-title" class="section-title">หลักสูตรแนะนำ</h2>
       <div class="course-grid">
         <!-- Course 1 -->
-        <div class="course">
-          <img src="assets/Kaizen-img.png" alt="หลักสูตร 1" class="course-image" loading="lazy" />
+        <article class="course">
+          <img src="assets/Kaizen-img.png" alt="หลักสูตรการปรับปรุงงานแบบ Kaizen" class="course-image" loading="lazy" />
           <h3>หลักสูตรการปรับปรุงงานแบบ Kaizen</h3>
-          <p>เรียนรู้แนวคิดและวิธีการปรับปรุงงานอย่างต่อเนื่อง</p>
+          <p>เรียนรู้แนวคิดและวิธีการปรับปรุงงานอย่างต่อเนื่องเพื่อเพิ่มประสิทธิภาพการทำงาน</p>
           <div class="course-info">
             <span>วันที่ : 28 ตุลาคม 2568</span>
             <span>สถานที่ : ห้องทดสอบ bitwise thailand ชั้น 4</span>
@@ -334,10 +500,10 @@
           <div class="btn-action">
             <a href="courses-keizen1.html" class="btn btn-secondary">ดูรายละเอียดหลักสูตร</a>
           </div>
-        </div>
+        </article>
         <!-- Course 2 -->
-        <div class="course">
-          <img src="assets/5s-img.png" alt="หลักสูตร 2" class="course-image" loading="lazy" />
+        <article class="course">
+          <img src="assets/5s-img.png" alt="หลักสูตรแนวคิดและวิธีการปฏิบัติตาม 5ส." class="course-image" loading="lazy" />
           <h3>แนวคิดและวิธีการปฏิบัติตาม 5ส.</h3>
           <p>5ส (5S) คือ เครื่องมือพื้นฐานในการจัดระเบียบสถานที่ทำงานอย่างมีประสิทธิภาพและปลอดภัย</p>
           <div class="course-info">
@@ -350,10 +516,10 @@
           <div class="btn-action">
             <a href="courses-5S.html" class="btn btn-secondary">ดูรายละเอียดหลักสูตร</a>
           </div>
-        </div>
+        </article>
         <!-- Course 3 -->
-        <div class="course">
-          <img src="assets/safety-img.png" alt="หลักสูตร 3" class="course-image" loading="lazy" />
+        <article class="course">
+          <img src="assets/safety-img.png" alt="หลักสูตรอุปกรณ์คุ้มครองความปลอดภัยส่วนบุคคล" class="course-image" loading="lazy" />
           <h3>หลักสูตรอุปกรณ์คุ้มครองความปลอดภัยส่วนบุคคล</h3>
           <p>หลักสูตรนี้มุ่งเน้นให้ผู้เรียนรู้จักเครื่องมือและอุปกรณ์ที่ใช้ในงานติดตั้งอย่างปลอดภัย</p>
           <div class="course-info">
@@ -366,38 +532,48 @@
           <div class="btn-action">
             <a href="safe.html" class="btn btn-secondary">ดูรายละเอียดหลักสูตร</a>
           </div>
-        </div>
+        </article>
       </div>
     </section>
-    <!-- Image Section -->
-    <section class="image-section">
-      <img src="assets/ChatGPT Image Jun 13, 2025, 10_37_30 AM (1).png" alt="รูปภาพประกอบเว็บไซต์" />
-    </section>
+    
     <!-- Video Section -->
-    <section class="video-section">
-      <h2>วิดีโอแนะนำจาก HR Bitwise Grup</h2>
+    <section class="video-section" aria-labelledby="videos-title">
+      <h2 id="videos-title" class="section-title">วิดีโอแนะนำจาก HR Bitwise Group</h2>
       <div class="video-grid">
         <div class="video-card">
-          <iframe src="https://www.youtube.com/embed/T1CSETUYaEo" title="5 ทักษะ ที่ HR ควรรู้ | HRODTHAI" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/T1CSETUYaEo" title="5 ทักษะ ที่ HR ควรรู้ | HRODTHAI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-card">
-          <iframe src="https://www.youtube.com/embed/3u_ybJdNzOU" title="ศิลปะการสั่งงานและมอบหมายงานอย่างมีประสิทธิภาพ | HRODTHAI" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/3u_ybJdNzOU" title="ศิลปะการสั่งงานและมอบหมายงานอย่างมีประสิทธิภาพ | HRODTHAI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-card">
-          <iframe src="https://www.youtube.com/embed/TMy6mko6zHU" title="การสอนงาน JOB INSTRUCTION | HRODTHAI" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/TMy6mko6zHU" title="การสอนงาน JOB INSTRUCTION | HRODTHAI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </section>
   </main>
+  
   <!-- Footer -->
-  <footer>
-    <p>© 2024 e-Learning สำหรับอบรมพนักงาน | 
-      <a href="privacy-policy.html">นโยบายความเป็นส่วนตัว</a>
-    </p>
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="index.html">หน้าแรก</a>
+        <a href="course.html">หลักสูตร</a>
+        <a href="news.html">ข่าวสาร</a>
+        <a href="contact.html">ติดต่อเรา</a>
+        <a href="privacy-policy.html">นโยบายความเป็นส่วนตัว</a>
+      </div>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.youtube.com/@HRBitwiseGroup" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p>© 2024 e-Learning สำหรับอบรมพนักงาน | Bitwise Group</p>
+    </div>
   </footer>
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  
   <script>
+    // Hero Background Rotation
     const heroSection = document.querySelector('.hero');
     const heroImages = [
       'assets/hero1.jpg',
@@ -405,15 +581,43 @@
       'assets/hero3.png',
       'assets/hero4.png'
     ];
+    
+    // ใช้รูปภาพ placeholder ถ้าไม่มีรูปภาพจริง
+    const placeholderImages = [
+      'https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+    ];
+    
     let currentImage = 0;
+    
     function changeHeroBackground() {
-      heroSection.style.backgroundImage = `url('${heroImages[currentImage]}')`;
+      // ใช้ placeholder ถ้าไม่มีรูปภาพในเครื่อง
+      const imagePath = heroImages[currentImage];
+      heroSection.style.backgroundImage = `url('${imagePath}')`;
       currentImage = (currentImage + 1) % heroImages.length;
     }
+    
     // เรียกครั้งแรก
     changeHeroBackground();
-    // เปลี่ยนทุก 5 วินาที บนทุกอุปกรณ์
+    
+    // เปลี่ยนทุก 5 วินาที
     setInterval(changeHeroBackground, 5000);
+    
+    // เพิ่ม loading state ให้ปุ่ม
+    document.querySelectorAll('.btn').forEach(button => {
+      button.addEventListener('click', function(e) {
+        if(this.href) {
+          this.classList.add('loading');
+          this.innerHTML = '<span class="loading"></span>';
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 1000);
+          e.preventDefault();
+        }
+      });
+    });
   </script>
 </body>
 </html>
