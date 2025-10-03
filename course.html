@@ -135,6 +135,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      -webkit-tap-highlight-color: transparent; /* ลด highlight เมื่อแตะบนมือถือ */
     }
     
     .dropdown-button:hover {
@@ -338,6 +339,9 @@
       .dropdown-button {
         font-size: 0.9rem;
         padding: 12px;
+        /* เพิ่ม padding สำหรับการแตะบนมือถือ */
+        padding-top: 14px;
+        padding-bottom: 14px;
       }
       
       .dropdown-button span {
@@ -385,6 +389,9 @@
       .dropdown-button {
         font-size: 0.85rem;
         padding: 10px;
+        /* เพิ่ม padding สำหรับการแตะบนมือถือ */
+        padding-top: 12px;
+        padding-bottom: 12px;
       }
       
       .dropdown-button span {
@@ -465,7 +472,7 @@
 
       <!-- Aircon Training -->
       <div class="dropdown">
-        <button class="dropdown-button" aria-expanded="false" onclick="toggleDropdown(this, 'aircon-training')">
+        <button class="dropdown-button" aria-expanded="false">
           <span>
             <i class="fas fa-snowflake"></i> หมวดหมู่: เครื่องปรับอากาศ
             <span class="status-badge">กำลังทดสอบ</span>
@@ -493,7 +500,7 @@
 
       <!-- Electricity Training -->
       <div class="dropdown">
-        <button class="dropdown-button" aria-expanded="false" onclick="toggleDropdown(this, 'electricity-training')">
+        <button class="dropdown-button" aria-expanded="false">
           <span>
             <i class="fas fa-bolt"></i> หมวดหมู่: อบรมเกี่ยวกับไฟฟ้า 
             <span class="status-badge">กำลังทดสอบ</span>
@@ -511,7 +518,7 @@
 
       <!-- Kaizen Training -->
       <div class="dropdown">
-        <button class="dropdown-button" aria-expanded="false" onclick="toggleDropdown(this, 'kaizen-training')">
+        <button class="dropdown-button" aria-expanded="false">
           <span>
             <i class="fas fa-bullseye"></i> หมวดหมู่: การปรับปรุงงานแบบ Kaizen
           </span>
@@ -528,7 +535,7 @@
 
       <!-- 5S Training -->
       <div class="dropdown">
-        <button class="dropdown-button" aria-expanded="false" onclick="toggleDropdown(this, '5s-training')">
+        <button class="dropdown-button" aria-expanded="false">
           <span>
             <i class="fas fa-hands-wash"></i> หมวดหมู่: หลักสูตรการอบรมเกี่ยวกับ 5 ส.
           </span>
@@ -545,7 +552,7 @@
 
       <!-- Safety Training -->
       <div class="dropdown">
-        <button class="dropdown-button" aria-expanded="false" onclick="toggleDropdown(this, 'safety-training')">
+        <button class="dropdown-button" aria-expanded="false">
           <span>
             <i class="fas fa-shield-alt"></i> หมวดหมู่: การฝึกอบรมด้านความปลอดภัย
           </span>
@@ -595,33 +602,16 @@
       });
     });
     
-    // Dropdown Functionality
-    function toggleDropdown(button, id) {
-      const content = document.getElementById(id);
-      const isOpen = content.classList.contains('open');
+    // Dropdown Functionality - แก้ไขเวอร์ชันใหม่
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdownButtons = document.querySelectorAll('.dropdown-button');
       
-      // ปิด dropdown ทั้งหมดก่อน
-      document.querySelectorAll('.dropdown-content').forEach(item => {
-        item.classList.remove('open');
-      });
-      document.querySelectorAll('.dropdown-button').forEach(btn => {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-expanded', 'false');
-        btn.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
-      });
-      
-      // เปิด dropdown ที่เลือก (ถ้ายังไม่เปิดอยู่)
-      if (!isOpen) {
-        content.classList.add('open');
-        button.classList.add('active');
-        button.setAttribute('aria-expanded', 'true');
-        button.querySelector('.fa-chevron-down').style.transform = 'rotate(180deg)';
-      }
-    }
-    
-    // ปิด dropdown เมื่อคลิกนอกพื้นที่
-    document.addEventListener('click', function(event) {
-      if (!event.target.closest('.dropdown')) {
+      // ฟังก์ชันเปิด/ปิด dropdown
+      function toggleDropdown(button) {
+        const content = button.nextElementSibling;
+        const isOpen = content.classList.contains('open');
+        
+        // ปิด dropdown ทั้งหมดก่อน
         document.querySelectorAll('.dropdown-content').forEach(item => {
           item.classList.remove('open');
         });
@@ -630,20 +620,51 @@
           btn.setAttribute('aria-expanded', 'false');
           btn.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
         });
+        
+        // เปิด dropdown ที่เลือก (ถ้ายังไม่เปิดอยู่)
+        if (!isOpen) {
+          content.classList.add('open');
+          button.classList.add('active');
+          button.setAttribute('aria-expanded', 'true');
+          button.querySelector('.fa-chevron-down').style.transform = 'rotate(180deg)';
+        }
       }
-    });
-    
-    // ปรับปรุงการแสดงผลสำหรับอุปกรณ์พกพา
-    document.addEventListener('DOMContentLoaded', function() {
-      // เพิ่มการจัดการสำหรับการสัมผัสบนอุปกรณ์พกพา
-      if ('ontouchstart' in window) {
-        document.querySelectorAll('.dropdown-button').forEach(button => {
-          button.addEventListener('touchstart', function(e) {
-            // ป้องกันการเลื่อนหน้าจอเมื่อแตะ dropdown
-            e.preventDefault();
-          });
+      
+      // เพิ่ม event listeners สำหรับทุกอุปกรณ์
+      dropdownButtons.forEach(button => {
+        // ใช้ทั้ง click และ touchstart เพื่อความครอบคลุม
+        button.addEventListener('click', function(e) {
+          e.stopPropagation();
+          toggleDropdown(this);
         });
-      }
+        
+        // สำหรับอุปกรณ์ touch เพิ่ม touchstart ด้วย
+        button.addEventListener('touchstart', function(e) {
+          // ไม่ต้องป้องกัน default behavior เพื่อให้ทำงานปกติ
+          e.stopPropagation();
+        }, { passive: true });
+      });
+      
+      // ปิด dropdown เมื่อคลิกนอกพื้นที่
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.dropdown')) {
+          document.querySelectorAll('.dropdown-content').forEach(item => {
+            item.classList.remove('open');
+          });
+          document.querySelectorAll('.dropdown-button').forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
+          });
+        }
+      });
+      
+      // ป้องกันการปิด dropdown เมื่อคลิกภายใน dropdown content
+      document.querySelectorAll('.dropdown-content').forEach(content => {
+        content.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      });
     });
   </script>
 </body>
