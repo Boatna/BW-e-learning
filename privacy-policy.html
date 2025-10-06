@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>นโยบายความเป็นส่วนตัว | ระบบอบรมพนักงาน</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Sarabun', 'TH Sarabun New', 'Tahoma', sans-serif;
+      line-height: 1.8;
+      color: #2c3e50;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 50px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(to bottom, #2980b9, #1a5276);
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #1a5276;
+      text-align: center;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 20px;
+    }
+    
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, #2980b9, #1a5276);
+      border-radius: 2px;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+    
+    .last-updated {
+      text-align: center;
+      font-style: italic;
+      color: #95a5a6;
+      margin-bottom: 30px;
+      font-size: 1rem;
+    }
+    
+    h2 {
+      font-size: 1.6rem;
+      margin: 35px 0 20px;
+      color: #2980b9;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ecf0f1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    h2 i {
+      color: #1a5276;
+      background: #ebf5fb;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    
+    p {
+      margin-bottom: 18px;
+      text-align: justify;
+      color: #34495e;
+      font-size: 1.05rem;
+    }
+    
+    ul {
+      margin-left: 25px;
+      margin-bottom: 20px;
+      padding-left: 10px;
+    }
+    
+    li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    li::before {
+      content: "•";
+      color: #2980b9;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    
+    .footer-note {
+      margin-top: 40px;
+      padding: 25px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      border-left: 4px solid #2980b9;
+      font-size: 0.95rem;
+      color: #7f8c8d;
+    }
+    
+    .footer-note p {
+      margin-bottom: 0;
+      font-style: italic;
+    }
+    
+    .contact-info {
+      background: #ebf5fb;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 25px 0;
+      border-left: 4px solid #2980b9;
+    }
+    
+    .contact-info p {
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .contact-info p span {
+      font-weight: 400;
+      color: #34495e;
+    }
+
+    /* Back to top button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #2980b9, #1a5276);
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 15px rgba(41, 128, 185, 0.4);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    #backToTop:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(41, 128, 185, 0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 25px;
+        margin: 20px 10px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.4rem;
+      }
+      
+      p, li {
+        font-size: 1rem;
+      }
+      
+      .last-updated, .subtitle {
+        font-size: 0.95rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.7rem;
+      }
+      
+      h2 {
+        font-size: 1.25rem;
+      }
+      
+      #backToTop {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1><i class="fas fa-lock"></i> นโยบายความเป็นส่วนตัว</h1>
+    <p class="subtitle"><strong>เว็บไซต์ E-Learning สำหรับการอบรมพนักงาน</strong></p>
+    <p class="last-updated"><em>เวอร์ชันล่าสุด: 1 เมษายน 2568</em></p>
+
+    <h2><i class="fas fa-book"></i> บทนำ</h2>
+    <p>
+      บริษัท Bitwise Thailand ให้ความสำคัญอย่างยิ่งต่อความเป็นส่วนตัวและความปลอดภัยของข้อมูลส่วนบุคคลของผู้ใช้งานเว็บไซต์ E-Learning ของเรา (“เว็บไซต์”) นโยบายนี้อธิบายถึงวิธีการที่เราเก็บรวบรวม ใช้ เปิดเผย จัดเก็บ และคุ้มครองข้อมูลส่วนบุคคลของท่านเมื่อท่านใช้งานเว็บไซต์ของเราเพื่อเข้าร่วมหลักสูตรอบรมพนักงาน
+    </p>
+    <p>
+      กรุณาอ่านนโยบายความเป็นส่วนตัวนี้อย่างละเอียดก่อนใช้งานเว็บไซต์ หากท่านไม่เห็นด้วยกับข้อกำหนดใด ๆ ในนโยบายนี้ โปรดหลีกเลี่ยงการใช้งานเว็บไซต์
+    </p>
+
+    <h2><i class="fas fa-user"></i> ข้อมูลส่วนบุคคลที่เราเก็บรวบรวม</h2>
+    <p>เราอาจเก็บรวบรวมข้อมูลส่วนบุคคลของท่าน ได้แก่:</p>
+    <ul>
+      <li><strong>ข้อมูลประจำตัว</strong>: ชื่อ-นามสกุล, รหัสพนักงาน, ตำแหน่งงาน, แผนก, อีเมลบริษัท, เบอร์โทรศัพท์ (ถ้ามี)</li>
+      <li><strong>ข้อมูลการใช้งาน</strong>: ประวัติการเข้าเรียนหลักสูตร, ความคืบหน้าในการเรียน, ผลการสอบ/แบบประเมิน, เวลาที่ใช้ในการเรียน</li>
+      <li><strong>ข้อมูลทางเทคนิค</strong>: IP Address, ประเภทของอุปกรณ์, เบราว์เซอร์, คุกกี้ (cookies) และข้อมูลการใช้งานเว็บไซต์อื่น ๆ</li>
+      <li><strong>ข้อมูลอื่น ๆ</strong>: ที่ท่านสมัครใจให้ไว้ เช่น ความคิดเห็น ข้อเสนอแนะ หรือการติดต่อผ่านแบบฟอร์ม</li>
+    </ul>
+
+    <h2><i class="fas fa-bullseye"></i> วัตถุประสงค์ในการเก็บรวบรวมและใช้ข้อมูล</h2>
+    <p>เราใช้ข้อมูลส่วนบุคคลของท่านเพื่อวัตถุประสงค์ดังต่อไปนี้:</p>
+    <ul>
+      <li>จัดการบัญชีผู้ใช้งานและยืนยันตัวตน</li>
+      <li>จัดส่งเนื้อหาหลักสูตรอบรม ประกาศ หรือข้อมูลที่เกี่ยวข้อง</li>
+      <li>ติดตามความคืบหน้าและประเมินผลการเรียนรู้ของพนักงาน</li>
+      <li>ปรับปรุงคุณภาพของหลักสูตรและประสบการณ์การใช้งาน</li>
+      <li>ปฏิบัติตามข้อกำหนดทางกฎหมายหรือระเบียบภายในองค์กร</li>
+      <li>สื่อสารกับท่านเกี่ยวกับกิจกรรมอบรมหรือการแจ้งเตือนที่จำเป็น</li>
+    </ul>
+
+    <h2><i class="fas fa-share-alt"></i> การเปิดเผยข้อมูลส่วนบุคคล</h2>
+    <p>เราอาจเปิดเผยข้อมูลส่วนบุคคลของท่านในกรณีดังต่อไปนี้:</p>
+    <ul>
+      <li><strong>ภายในองค์กร</strong>: ฝ่ายทรัพยากรบุคคล (HR), ผู้จัดการทีม หรือผู้ดูแลระบบ เพื่อวัตถุประสงค์ในการบริหารจัดการการอบรม</li>
+      <li><strong>ผู้ให้บริการภายนอก</strong>: เช่น ผู้ให้บริการระบบ E-Learning, ผู้ให้บริการด้านเทคโนโลยี หรือผู้ให้บริการคลาวด์ (ภายใต้ข้อตกลงคุ้มครองข้อมูล)</li>
+      <li><strong>ตามกฎหมาย</strong>: เมื่อเราจำเป็นต้องปฏิบัติตามคำสั่งศาล กฎหมาย หรือกระบวนการทางกฎหมายอื่น ๆ</li>
+    </ul>
+    <p>เราไม่ขาย แลกเปลี่ยน หรือให้เช่าข้อมูลส่วนบุคคลของท่านแก่บุคคลภายนอกเพื่อวัตถุประสงค์ทางการตลาด</p>
+
+    <h2><i class="fas fa-shield-alt"></i> ความปลอดภัยของข้อมูล</h2>
+    <p>
+      เราได้จัดทำมาตรการรักษาความปลอดภัยทั้งทางเทคนิคและองค์กร เพื่อป้องกันการเข้าถึง ใช้ เปลี่ยนแปลง หรือเปิดเผยข้อมูลส่วนบุคคลโดยไม่ได้รับอนุญาต รวมถึงการเข้ารหัสข้อมูล (encryption), การควบคุมสิทธิ์การเข้าถึงระบบ และการตรวจสอบความปลอดภัยเป็นประจำ
+    </p>
+
+    <h2><i class="fas fa-user-shield"></i> สิทธิของท่านเกี่ยวกับข้อมูลส่วนบุคคล</h2>
+    <p>ภายใต้กฎหมายคุ้มครองข้อมูลส่วนบุคคล ท่านมีสิทธิ:</p>
+    <ul>
+      <li>เข้าถึงข้อมูลส่วนบุคคลของท่าน</li>
+      <li>ขอรับสำเนาข้อมูล</li>
+      <li>ขอแก้ไขหรืออัปเดตข้อมูลให้ถูกต้อง</li>
+      <li>ขอให้ลบหรือทำลายข้อมูล (ในกรณีที่ไม่จำเป็นต้องเก็บรักษาตามกฎหมาย)</li>
+      <li>คัดค้านหรือจำกัดการประมวลผลข้อมูล</li>
+      <li>ถอนความยินยอม (หากการเก็บรวบรวมข้อมูลอ้างอิงจากความยินยอม)</li>
+    </ul>
+    <p>ท่านสามารถติดต่อเราผ่านช่องทางที่ระบุในหัวข้อ “ติดต่อเรา” เพื่อใช้สิทธิของท่าน</p>
+
+    <h2><i class="fas fa-envelope"></i> ติดต่อสอบถาม เจ้าหน้าที่คุ้มครองข้อมูล</h2>
+    <div class="contact-info">
+      <p><strong>เจ้าหน้าที่คุ้มครองข้อมูล (Data Protection Officer – DPO)</strong></p>
+      <p><strong> คุณ ปัทมา ภู่มาศ</strong></p>
+      <p><i class="fas fa-envelope"></i> อีเมล: <span>phattama.p@bitwise.co.th</span></p>
+      <p><i class="fas fa-phone"></i> เบอร์โทรศัพท์: <span>106</span></p>
+    </div>
+    <div class="contact-info">
+      <p><strong>แอดมินเจ้าหน้าที่คุ้มครองข้อมูล (Data Protection Officer – DPO)</strong></p>
+      <p><strong> คุณ อภิชญา จิยะรันดร์</strong></p>
+      <p><i class="fas fa-envelope"></i> อีเมล: <span>apitchaya.w@bitwise.co.th</span></p>
+      <p><i class="fas fa-phone"></i> เบอร์โทรศัพท์: <span>106</span></p>
+    </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="กลับด้านบน">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // แสดง/ซ่อน ปุ่ม "กลับด้านบน"
+    const backToTopButton = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 400) {
+        backToTopButton.style.display = "flex";
+      } else {
+        backToTopButton.style.display = "none";
+      }
+    });
+
+    // เลื่อนกลับด้านบนเมื่อกดปุ่ม
+    backToTopButton.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+</body>
+</html>
